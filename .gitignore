@@ -102,3 +102,4 @@ nb-configuration.xml
 .nb-gradle/
 
 forcadevendas/target/
+flyway/target/
