@@ -1,12 +1,16 @@
 package com.pqt.forcadevendas.entity;
 
 import java.io.Serializable;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -25,6 +29,10 @@ public class Estado implements Serializable{
 	@Column(length = 3)
 	private String sigla;
 	
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinColumn(name="IDESTADO", nullable=false)
+	private Set<Cidade> cidades;
+	
 	public Long getId() {
 		return id;
 	}
@@ -42,5 +50,13 @@ public class Estado implements Serializable{
 	}
 	public void setSigla(String sigla) {
 		this.sigla = sigla;
+	}
+	
+	public Set<Cidade> getCidades() {
+		return cidades;
+	}
+	
+	public void setCidades(Set<Cidade> cidades) {
+		this.cidades = cidades;
 	}
 }
