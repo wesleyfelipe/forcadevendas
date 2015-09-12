@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.pqt.forcadevendas.entity.Cliente;
+import com.pqt.forcadevendas.entity.to.ClienteDTO;
 import com.pqt.forcadevendas.service.IClienteService;
 
 @RestController
@@ -17,7 +17,7 @@ public class ClienteController {
 	private IClienteService service;
 	
 	@RequestMapping(value="/cliente", method=RequestMethod.GET)
-	public List<Cliente> getClientes(){
+	public List<ClienteDTO> getClientes(){
 		return service.getClientes();
 	}
 }
