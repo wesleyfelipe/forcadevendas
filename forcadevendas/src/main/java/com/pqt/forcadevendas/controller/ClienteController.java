@@ -11,12 +11,13 @@ import com.pqt.forcadevendas.entity.to.ClienteDTO;
 import com.pqt.forcadevendas.service.IClienteService;
 
 @RestController
-public class ClienteController {
+@RequestMapping(value="/cliente")
+public class ClienteController{
 
 	@Autowired
 	private IClienteService service;
 	
-	@RequestMapping(value="/cliente", method=RequestMethod.GET)
+	@RequestMapping(method=RequestMethod.GET, produces="application/json")
 	public List<ClienteDTO> getClientes(){
 		return service.getClientes();
 	}
