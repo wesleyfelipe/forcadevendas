@@ -2,12 +2,12 @@ package com.pqt.forcadevendas.entity.to;
 
 public class ClienteDTO {
 
-	private Long id;
+	private Integer id;
 	private String nome;
-	private Character situacao;
+	private String situacao;
 	private String cnpj;
 	
-	public ClienteDTO(Long id, String nome, Character situacao, String cnpj) {
+	public ClienteDTO(Integer id, String nome, String situacao, String cnpj) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -15,11 +15,11 @@ public class ClienteDTO {
 		this.cnpj = cnpj;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -31,11 +31,11 @@ public class ClienteDTO {
 		this.nome = nome;
 	}
 
-	public Character getSituacao() {
+	public String getSituacao() {
 		return situacao;
 	}
 
-	public void setSituacao(Character situacao) {
+	public void setSituacao(String situacao) {
 		this.situacao = situacao;
 	}
 

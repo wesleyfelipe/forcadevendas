@@ -25,8 +25,9 @@ public class RepresentanteDAO implements IRepresentanteDAO {
 
 	@Override
 	public Representante getRepresentante(String username) {
+		//TODO: mudar método de cosulta. QueryDSL?
 		return (Representante) getCurrentSession().createCriteria(Representante.class)
-				.add(Restrictions.eq("login", username).ignoreCase()).uniqueResult();
+				.add(Restrictions.eq("username", username).ignoreCase()).uniqueResult();
 	}
 
 }

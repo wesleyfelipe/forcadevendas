@@ -2,91 +2,90 @@ package com.pqt.forcadevendas.entity;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
+/**
+ * The persistent class for the representante database table.
+ * 
+ */
 @Entity
-@Table( name = "REPRESENTANTE", schema = "FDV_ONLINE") //TODO: remover conf de schema daqui
-public class Representante implements Serializable, UserDetails{
-
+@Table(schema="FDV_ONLINE")
+public class Representante implements Serializable, UserDetails {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long id;
-	
-	@Column(length = 255, nullable = false)
-	private String nome;
-	
-	@Column(length = 12, nullable = false)
+	private Integer id;
+
 	private String cpf;
-	
-	@Column(length = 11, nullable = false)
-	private String rg;
-	
-	@Column(length = 255, nullable = false)
+
 	private String email;
-	
-	@Column(length = 25, nullable = false)
+
 	private String fone;
-	
-	@Column(nullable = false)
-	private Character situacao;
-	
-	@Column(length = 30, nullable = false)
-	private String login;
-	
-	@JsonIgnore
-	@Column(length = 30, nullable = false)
+
+	private String username;
+
+	private String nome;
+
+	private String rg;
+
 	private String senha;
 
-	public Long getId() {
-		return id;
+	private String situacao;
+
+	//bi-directional many-to-one association to Representacao
+	@OneToMany(mappedBy="representante")
+	private List<Representacao> representacoes;
+
+	//bi-directional many-to-one association to Representanterole
+	@OneToMany(mappedBy="representante", fetch=FetchType.EAGER)
+	private List<RepresentanteRole> representanteRoles;
+
+	//bi-directional many-to-one association to Supervisao
+	@OneToMany(mappedBy="supervisor")
+	private List<Supervisao> supervisoes;
+
+	//bi-directional many-to-one association to Supervisao
+	@OneToMany(mappedBy="representante")
+	private List<Supervisao> supervisadoPor;
+
+	public Representante() {
 	}
 
-	public void setId(Long id) {
+	public Integer getId() {
+		return this.id;
+	}
+
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
 	public String getCpf() {
-		return cpf;
+		return this.cpf;
 	}
 
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 
-	public String getRg() {
-		return rg;
-	}
-
-	public void setRg(String rg) {
-		this.rg = rg;
-	}
-
 	public String getEmail() {
-		return email;
+		return this.email;
 	}
 
 	public void setEmail(String email) {
@@ -94,51 +93,151 @@ public class Representante implements Serializable, UserDetails{
 	}
 
 	public String getFone() {
-		return fone;
+		return this.fone;
 	}
 
 	public void setFone(String fone) {
 		this.fone = fone;
 	}
 
-	public Character getSituacao() {
-		return situacao;
+	public String getUsename() {
+		return this.username;
 	}
 
-	public void setSituacao(Character situacao) {
-		this.situacao = situacao;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
-	public String getLogin() {
-		return login;
+	public String getNome() {
+		return this.nome;
 	}
 
-	public void setLogin(String login) {
-		this.login = login;
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getRg() {
+		return this.rg;
+	}
+
+	public void setRg(String rg) {
+		this.rg = rg;
 	}
 
 	public String getSenha() {
-		return senha;
+		return this.senha;
 	}
 
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
 
+	public String getSituacao() {
+		return this.situacao;
+	}
+
+	public void setSituacao(String situacao) {
+		this.situacao = situacao;
+	}
+
+	public List<Representacao> getRepresentacoes() {
+		return this.representacoes;
+	}
+
+	public void setRepresentacoes(List<Representacao> representacoes) {
+		this.representacoes = representacoes;
+	}
+
+	public Representacao addRepresentacao(Representacao representacao) {
+		getRepresentacoes().add(representacao);
+		representacao.setRepresentante(this);
+
+		return representacao;
+	}
+
+	public Representacao removeRepresentacao(Representacao representacao) {
+		getRepresentacoes().remove(representacao);
+		representacao.setRepresentante(null);
+
+		return representacao;
+	}
+
+	public List<RepresentanteRole> getRepresentanteRoles() {
+		return this.representanteRoles;
+	}
+
+	public void setRepresentanteroles(List<RepresentanteRole> representanteroles) {
+		this.representanteRoles = representanteroles;
+	}
+
+	public RepresentanteRole addRepresentanteRole(RepresentanteRole representanterole) {
+		getRepresentanteRoles().add(representanterole);
+		representanterole.setRepresentante(this);
+
+		return representanterole;
+	}
+
+	public RepresentanteRole removeRepresentanterole(RepresentanteRole representanterole) {
+		getRepresentanteRoles().remove(representanterole);
+		representanterole.setRepresentante(null);
+
+		return representanterole;
+	}
+
+	public List<Supervisao> getSupervisoes() {
+		return this.supervisoes;
+	}
+
+	public void setSupervisoes(List<Supervisao> supervisoes) {
+		this.supervisoes = supervisoes;
+	}
+
+	public Supervisao addSupervisao(Supervisao supervisao) {
+		getSupervisoes().add(supervisao);
+		supervisao.setSupervisor(this);
+
+		return supervisao;
+	}
+
+	public Supervisao removeSupervisao(Supervisao supervisao) {
+		getSupervisoes().remove(supervisao);
+		supervisao.setSupervisor(null);
+
+		return supervisao;
+	}
+
+	public List<Supervisao> getSupervisadoPor() {
+		return this.supervisadoPor;
+	}
+
+	public void setSupervisadoPor(List<Supervisao> supervisadoPor) {
+		this.supervisadoPor = supervisadoPor;
+	}
+
+	public Supervisao addSupervisadoPor(Supervisao supervisao) {
+		getSupervisadoPor().add(supervisao);
+		supervisao.setRepresentante(this);
+
+		return supervisao;
+	}
+
+	public Supervisao removeSupervisadoPor(Supervisao supervisadoPor) {
+		getSupervisadoPor().remove(supervisadoPor);
+		supervisadoPor.setRepresentante(null);
+
+		return supervisadoPor;
+	}
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		Set<String> roles = null;  //TODO: Adicionar roles na entidade
-
-		if (roles == null) {
-			//TODO: remover código. Teste.
-			Set<GrantedAuthority> authorities = new HashSet<GrantedAuthority>();
-			authorities.add(new SimpleGrantedAuthority("user"));
-			return authorities;
+		
+		if (representanteRoles == null) {
+			return Collections.emptyList();
 		}
 
 		Set<GrantedAuthority> authorities = new HashSet<GrantedAuthority>();
-		for (String role : roles) {
-			authorities.add(new SimpleGrantedAuthority(role));
+		for (RepresentanteRole role : representanteRoles) {
+			authorities.add(new SimpleGrantedAuthority(role.getRole().getNome()));
 		}
 
 		return authorities;
@@ -146,37 +245,33 @@ public class Representante implements Serializable, UserDetails{
 
 	@Override
 	public String getPassword() {
-		// TODO Auto-generated method stub
 		return senha;
 	}
 
 	@Override
 	public String getUsername() {
-		// TODO Auto-generated method stub
-		return login;
+		return username;
 	}
 
 	@Override
 	public boolean isAccountNonExpired() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
 	@Override
 	public boolean isAccountNonLocked() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
 	@Override
 	public boolean isCredentialsNonExpired() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
 	@Override
 	public boolean isEnabled() {
-		// TODO Auto-generated method stub
-		return true;
+		//TODO: adicionar um enum no lugar do 'A'
+		return situacao.equalsIgnoreCase("A");
 	}
+
 }
