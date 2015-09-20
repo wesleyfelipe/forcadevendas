@@ -1,7 +1,5 @@
 package com.pqt.forcadevendas.controller;
 
-import javax.ws.rs.WebApplicationException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -44,18 +42,4 @@ public class AcessoController {
 
 		return new TokenDTO(TokenUtils.createToken(userDetails));
 	}
-
-	public UsuarioDTO getUser() {
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		Object principal = authentication.getPrincipal();
-		if (principal instanceof String && ((String) principal).equals("anonymousUser")) {
-			throw new WebApplicationException(401);
-		}
-		UserDetails userDetails = (UserDetails) principal;
-
-		UsuarioDTO usuarioDTO = new UsuarioDTO();
-		usuarioDTO.setUsername(userDetails.getUsername());
-		return usuarioDTO;
-	}
-
 }
