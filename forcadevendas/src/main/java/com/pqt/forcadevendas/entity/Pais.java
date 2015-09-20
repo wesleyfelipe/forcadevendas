@@ -1,49 +1,44 @@
 package com.pqt.forcadevendas.entity;
 
 import java.io.Serializable;
-import java.util.Set;
+import javax.persistence.*;
+import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
+/**
+ * The persistent class for the pais database table.
+ * 
+ */
 @Entity
-@Table( name = "PAIS", schema = "FDV_ONLINE") //TODO: remover conf de schema daqui
-public class Pais implements Serializable{
-
+@Table(name="pais", schema="FDV_ONLINE")
+public class Pais implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long id;
-	
-	@Column(length = 255, nullable = false)
-	private String nome;
-	
-	@Column(length = 3, nullable = false)
-	private String sigla;
-	
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	@JoinColumn(name="IDPAIS", nullable=false)
-	private Set<Estado> estados;
+	private Integer id;
 
-	public Long getId() {
-		return id;
+	private String nome;
+
+	private String sigla;
+
+	//bi-directional many-to-one association to Estado
+	@OneToMany(mappedBy="pais")
+	private List<Estado> estados;
+
+	public Pais() {
 	}
 
-	public void setId(Long id) {
+	public Integer getId() {
+		return this.id;
+	}
+
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
 	public String getNome() {
-		return nome;
+		return this.nome;
 	}
 
 	public void setNome(String nome) {
@@ -51,18 +46,33 @@ public class Pais implements Serializable{
 	}
 
 	public String getSigla() {
-		return sigla;
+		return this.sigla;
 	}
 
 	public void setSigla(String sigla) {
 		this.sigla = sigla;
 	}
 
-	public Set<Estado> getEstados() {
-		return estados;
+	public List<Estado> getEstados() {
+		return this.estados;
 	}
 
-	public void setEstados(Set<Estado> estados) {
+	public void setEstados(List<Estado> estados) {
 		this.estados = estados;
 	}
+
+	public Estado addEstado(Estado estado) {
+		getEstados().add(estado);
+		estado.setPais(this);
+
+		return estado;
+	}
+
+	public Estado removeEstado(Estado estado) {
+		getEstados().remove(estado);
+		estado.setPais(null);
+
+		return estado;
+	}
+
 }

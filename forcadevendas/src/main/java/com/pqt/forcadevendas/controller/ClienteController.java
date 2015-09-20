@@ -11,7 +11,7 @@ import com.pqt.forcadevendas.entity.to.ClienteDTO;
 import com.pqt.forcadevendas.service.IClienteService;
 
 @RestController
-@RequestMapping(value="/cliente")
+@RequestMapping(value="/recursos/cliente")
 public class ClienteController{
 
 	@Autowired

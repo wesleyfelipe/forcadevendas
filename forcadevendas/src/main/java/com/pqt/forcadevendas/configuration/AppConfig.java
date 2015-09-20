@@ -8,6 +8,7 @@ import javax.sql.DataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -17,10 +18,11 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
-@ComponentScan("com.pqt.forcadevendas")
 @EnableWebMvc
 @EnableTransactionManagement
 @PropertySource("classpath:application.properties")
+@ComponentScan("com.pqt.forcadevendas")
+@ImportResource({"classpath:security-context.xml"})
 public class AppConfig {
      
     private static final String PROPERTY_NAME_DATABASE_DRIVER = "db.driver";
