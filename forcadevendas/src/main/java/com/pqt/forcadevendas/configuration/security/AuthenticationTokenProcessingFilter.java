@@ -13,6 +13,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.filter.GenericFilterBean;
 
 public class AuthenticationTokenProcessingFilter extends GenericFilterBean {
@@ -24,6 +25,7 @@ public class AuthenticationTokenProcessingFilter extends GenericFilterBean {
 	}
 
 	@Override
+	@Transactional
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		HttpServletRequest httpRequest = this.getAsHttpRequest(request);

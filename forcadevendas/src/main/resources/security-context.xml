@@ -35,7 +35,7 @@
 			position="FORM_LOGIN_FILTER" />
 		<security:intercept-url pattern="/rest/login"
 			access="permitAll" />
-		<security:intercept-url pattern="/rest/recursos/*" access="hasRole('REPRESENTANTE') or hasRole('SUPERVISOR') or hasRole('ADMIN')"/>
+		<security:intercept-url pattern="/rest/recursos/**" access="hasRole('REPRESENTANTE') or hasRole('SUPERVISOR') or hasRole('ADMIN')"/>
 	</security:http>
 
 	<bean id="unauthorizedEntryPoint"

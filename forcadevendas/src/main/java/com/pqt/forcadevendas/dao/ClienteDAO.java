@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -23,5 +24,13 @@ public class ClienteDAO implements IClienteDAO{
 	public List<Cliente> listarClientes() {
 		return getCurrentSession().createQuery("from " + Cliente.class.getSimpleName()).list();
 	}
+
+	@Override
+	public Cliente getCliente(int id) {
+		return (Cliente) getCurrentSession().createCriteria(Cliente.class)
+				.add(Restrictions.eq("id", id)).uniqueResult();
+	}
+    
+    
 
 }
