@@ -20,12 +20,12 @@ public class ClienteController{
 	private IClienteService service;
 	
 	@RequestMapping(method=RequestMethod.GET, produces="application/json")
-	public List<ClienteDadosBasicosDTO> getClientes(){
-		return service.getClientes();
+	public List<ClienteDadosBasicosDTO> listClientes(){
+		return service.listClientes();
 	}
 	
 	@RequestMapping(method=RequestMethod.GET, produces="application/json", value="/{id}")
-	public ClienteDTO getCliente(@PathVariable("id") Integer id) throws Exception{
+	public ClienteDTO getCliente(@PathVariable("id") Integer id){
 		return service.getCliente(id);
 	}
 }

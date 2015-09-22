@@ -21,7 +21,8 @@ public class ClienteDAO implements IClienteDAO{
     }
 	
     @SuppressWarnings("unchecked")
-	public List<Cliente> listarClientes() {
+    @Override
+	public List<Cliente> listClientes() {
 		return getCurrentSession().createQuery("from " + Cliente.class.getSimpleName()).list();
 	}
 

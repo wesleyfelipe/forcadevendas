@@ -8,7 +8,7 @@ public class ClienteDTO {
 
 	private Integer id;
 	private String cnpj;
-	private Date datacadastro;
+	private Date dataCadastro;
 	private String email;
 	private String fone;
 	private Integer limitePedidos;
@@ -33,12 +33,12 @@ public class ClienteDTO {
 		this.cnpj = cnpj;
 	}
 	
-	public Date getDatacadastro() {
-		return datacadastro;
+	public Date getDataCadastro() {
+		return dataCadastro;
 	}
 	
-	public void setDatacadastro(Date datacadastro) {
-		this.datacadastro = datacadastro;
+	public void setDataCadastro(Date datacadastro) {
+		this.dataCadastro = datacadastro;
 	}
 	
 	public String getEmail() {

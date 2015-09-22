@@ -21,8 +21,8 @@ public class ClienteService implements IClienteService {
 	private IClienteDAO dao;
 
 	@Override
-	public List<ClienteDadosBasicosDTO> getClientes() {
-		List<Cliente> clientes = dao.listarClientes();
+	public List<ClienteDadosBasicosDTO> listClientes() {
+		List<Cliente> clientes = dao.listClientes();
 		List<ClienteDadosBasicosDTO> dtos = new ArrayList<ClienteDadosBasicosDTO>();
 		for (Cliente cliente : clientes) {
 			dtos.add(new ClienteDadosBasicosDTO(cliente.getId(), cliente.getNome(), cliente.getSituacao(),
@@ -41,7 +41,7 @@ public class ClienteService implements IClienteService {
 		ClienteDTO dto = new ClienteDTO();
 		dto.setId(cliente.getId());
 		dto.setCnpj(cliente.getCnpj());
-		dto.setDatacadastro(cliente.getDatacadastro());
+		dto.setDataCadastro(cliente.getDatacadastro());
 		dto.setEmail(cliente.getEmail());
 		dto.setFone(cliente.getFone());
 		dto.setLimitePedidos(cliente.getLimitepedidos());
