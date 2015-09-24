@@ -4,43 +4,11 @@
     </div>
 
     <div class="list-group">
-        <a href="#" class="list-group-item">
-            <h4 class="list-item-heading">&lt;Nome&gt;</h4>
-            <p class="list-group-item-text">#&lt;Código&gt; - <span class="label label-default">&lt;Status&gt;</span></p>
+        <a href="#" class="list-group-item" ng-repeat="cliente in clientes">
+            <h4 class="list-item-heading">{{cliente.nome}}</h4>
+            <p class="list-group-item-text">#{{cliente.id}} - <span class="label" ng-class="getStatusClass('{{cliente.status}}')">{{cliente.status}}</span></p>
             <p class="list-gorup-item-text">
-                <small>&lt;CNPJ&gt;</small>
-            </p>
-        </a>
-
-        <a href="#" class="list-group-item">
-            <h4 class="list-item-heading">Cliente #001</h4>
-            <p class="list-group-item-text">#001 <span class="label label-success">Ativo</span></p>
-            <p class="list-gorup-item-text">
-                <small>00.000.000/0001-00</small>
-            </p>
-        </a>
-
-        <a href="#" class="list-group-item">
-            <h4 class="list-item-heading">Cliente #002</h4>
-            <p class="list-group-item-text">#002 <span class="label label-success">Ativo</span></p>
-            <p class="list-gorup-item-text">
-                <small>00.000.000/0001-00</small>
-            </p>
-        </a>
-
-        <a href="#" class="list-group-item">
-            <h4 class="list-item-heading">Cliente #003</h4>
-            <p class="list-group-item-text">#003 <span class="label label-danger">Inativo</span></p>
-            <p class="list-gorup-item-text">
-                <small>00.000.000/0001-00</small>
-            </p>
-        </a>
-
-        <a href="#" class="list-group-item">
-            <h4 class="list-item-heading">Cliente #004</h4>
-            <p class="list-group-item-text">#004 <span class="label label-success">Ativo</span></p>
-            <p class="list-gorup-item-text">
-                <small>00.000.000/0001-00</small>
+                <small>{{cliente.cnpj}}</small>
             </p>
         </a>
     </div>
