@@ -39,6 +39,12 @@ public class ClienteDAO implements IClienteDAO{
 		getCurrentSession().persist(cliente);
 		return cliente;
 	}
+
+	@Override
+	public Cliente updateCliente(Cliente cliente) {
+		getCurrentSession().update(cliente);
+		return cliente;
+	}
     
     
 

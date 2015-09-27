@@ -58,6 +58,16 @@ public class ClienteService implements IClienteService {
 
 		return buildClienteDtoFromCliente(cliente);
 	}
+	
+	@Override
+	public ClienteDTO updateCliente(Integer idCliente, ClienteDTO clienteDto) {
+		Cliente cliente = dao.getCliente(idCliente);
+		if(clienteDto == null || cliente == null)
+			return null;
+		updateClienteFromClienteDto(cliente, clienteDto);
+		dao.updateCliente(cliente);
+		return buildClienteDtoFromCliente(cliente);
+	}
 
 	private Cliente updateClienteFromClienteDto(Cliente cliente, ClienteDTO dto) {
 		if (cliente == null || dto == null)
@@ -121,5 +131,4 @@ public class ClienteService implements IClienteService {
 						endereco.getCidade().getEstado().getNome(),
 						endereco.getCidade().getEstado().getPais().getNome());
 	}
-
 }

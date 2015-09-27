@@ -34,4 +34,9 @@ public class ClienteController{
 	public ClienteDTO persistCliente(@RequestBody ClienteDTO dto){
 		return service.persistCliente(dto);
 	}
+	
+	@RequestMapping(method = RequestMethod.PUT, produces = "application/json", value="/{id}")
+	public ClienteDTO updateCliente(@PathVariable("id") Integer id, @RequestBody ClienteDTO dto){
+		return service.updateCliente(id, dto);
+	}
 }
