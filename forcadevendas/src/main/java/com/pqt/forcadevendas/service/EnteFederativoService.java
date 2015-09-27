@@ -10,6 +10,7 @@ import com.pqt.forcadevendas.dao.IEnteFederativoDAO;
 import com.pqt.forcadevendas.entity.Cidade;
 import com.pqt.forcadevendas.entity.Estado;
 import com.pqt.forcadevendas.entity.Pais;
+import com.pqt.forcadevendas.entity.to.CidadeDTO;
 import com.pqt.forcadevendas.entity.to.EstadoDTO;
 import com.pqt.forcadevendas.entity.to.PaisDTO;
 
@@ -29,18 +30,21 @@ public class EnteFederativoService implements IEnteFederativoService {
 	}
 
 	@Override
-	public List<EstadoDTO> listEstados(Integer pais) {
+	public List<EstadoDTO> listEstados(Integer idPais) {
 		List<EstadoDTO> dtos = new ArrayList<EstadoDTO>();
-		for (Estado estado : dao.listEstados(pais)) {
+		for (Estado estado : dao.listEstados(idPais)) {
 			dtos.add(new EstadoDTO(estado.getId(), estado.getNome()));
 		}
 		return dtos;
 	}
 
 	@Override
-	public List<Cidade> listCidades(Estado estado) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<CidadeDTO> listCidades(Integer idEstado) {
+		List<CidadeDTO> dtos = new ArrayList<CidadeDTO>();
+		for (Cidade cidade : dao.listCidades(idEstado)) {
+			dtos.add(new CidadeDTO(cidade.getId(), cidade.getNome()));
+		}
+		return dtos;
 	}
 
 }

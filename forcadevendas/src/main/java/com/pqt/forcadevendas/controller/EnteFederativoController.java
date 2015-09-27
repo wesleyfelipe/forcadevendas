@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.pqt.forcadevendas.entity.to.CidadeDTO;
 import com.pqt.forcadevendas.entity.to.EstadoDTO;
 import com.pqt.forcadevendas.entity.to.PaisDTO;
 import com.pqt.forcadevendas.service.IEnteFederativoService;
@@ -27,5 +28,10 @@ public class EnteFederativoController {
 	@RequestMapping(value="/estado", method=RequestMethod.GET, produces="application/json")
 	public List<EstadoDTO> listEstados(@RequestParam("pais") Integer pais){
 		return service.listEstados(pais);
+	}
+	
+	@RequestMapping(value="/cidade", method=RequestMethod.GET, produces="application/json")
+	public List<CidadeDTO> listCidades(@RequestParam("estado") Integer estado){
+		return service.listCidades(estado);
 	}
 }

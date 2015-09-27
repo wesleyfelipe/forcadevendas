@@ -36,10 +36,13 @@ public class EnteFederativoDAO implements IEnteFederativoDAO{
 				.list();
 	}
 
+    @SuppressWarnings("unchecked")
 	@Override
-	public List<Cidade> listCidades(Estado estado) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Cidade> listCidades(Integer idEstado) {
+		return getCurrentSession()
+				.createQuery("SELECT r FROM " + Cidade.class.getSimpleName() + " r WHERE r.estado.id=:idEstado")
+				.setParameter("idEstado", idEstado)
+				.list();
 	}
 
 }
