@@ -11,4 +11,5 @@ public interface IEnteFederativoDAO{
 	public List<Pais> listPaises();
 	public List<Estado> listEstados(Integer idPais);
 	public List<Cidade> listCidades(Integer idEstado);
+	public Cidade getCidade(String nome);
 }

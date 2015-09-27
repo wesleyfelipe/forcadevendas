@@ -9,4 +9,6 @@ public interface IClienteDAO {
 	public List<Cliente> listClientes();
 	
 	public Cliente getCliente(int id);
+	
+	public Cliente persistCliente(Cliente cliente);
 }

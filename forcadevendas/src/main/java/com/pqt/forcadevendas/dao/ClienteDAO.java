@@ -7,10 +7,12 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.pqt.forcadevendas.entity.Cliente;
 
 @Repository
+@Transactional
 public class ClienteDAO implements IClienteDAO{
 
 	@Autowired
@@ -30,6 +32,12 @@ public class ClienteDAO implements IClienteDAO{
 	public Cliente getCliente(int id) {
 		return (Cliente) getCurrentSession().createCriteria(Cliente.class)
 				.add(Restrictions.eq("id", id)).uniqueResult();
+	}
+
+	@Override
+	public Cliente persistCliente(Cliente cliente) {
+		getCurrentSession().persist(cliente);
+		return cliente;
 	}
     
     

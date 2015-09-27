@@ -18,12 +18,12 @@ public class EnderecoEntrega implements Serializable {
 	private Integer id;
 
 	//bi-directional many-to-one association to Cliente
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="idcliente")
 	private Cliente cliente;
 
 	//bi-directional many-to-one association to Endereco
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="idendereco")
 	private Endereco endereco;
 

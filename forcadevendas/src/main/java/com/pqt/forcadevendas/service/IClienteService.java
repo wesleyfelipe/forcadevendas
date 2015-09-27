@@ -8,5 +8,8 @@ import com.pqt.forcadevendas.entity.to.ClienteDadosBasicosDTO;
 public interface IClienteService {
 
 	public List<ClienteDadosBasicosDTO> listClientes();
+	
 	public ClienteDTO getCliente(int id);
+	
+	public ClienteDTO persistCliente(ClienteDTO clienteDto);
 }

@@ -35,12 +35,12 @@ public class Cliente implements Serializable {
 	private String situacao;
 
 	//bi-directional many-to-one association to Endereco
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="idenderecocomercial")
 	private Endereco endereco;
 
 	//bi-directional many-to-one association to Enderecoentrega
-	@OneToMany(mappedBy="cliente")
+	@OneToMany(mappedBy="cliente", cascade=CascadeType.ALL)
 	private List<EnderecoEntrega> enderecoentregas;
 
 	public Cliente() {
