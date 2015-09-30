@@ -1,5 +1,8 @@
 package com.pqt.forcadevendas.handler;
 
+import javax.ws.rs.NotFoundException;
+
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -15,20 +18,34 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ResponseBody
     JsonApiError handleException(Exception ex) {
-        return new JsonApiError(ex.getMessage(), "Ops, um erro inesperado aconteceu. Tente novamente mais tarde");
+        return new JsonApiError("Erro inesperado", ex.getMessage());
     }
 	
 	@ExceptionHandler
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     @ResponseBody
     JsonApiError handleException(BadCredentialsException ex) {
-        return new JsonApiError(ex.getMessage(), "Credenciais informadas são inválidas.");
+        return new JsonApiError("Credenciais informadas são inválidas.", ex.getMessage());
     }
 	
 	@ExceptionHandler
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
     @ResponseBody
     JsonApiError handleException(HttpMessageNotReadableException ex) {
-        return new JsonApiError(ex.getMessage(), "O conteúdo da requisição é inválido. Revise os dados fornecidos.");
+        return new JsonApiError("O conteúdo da requisição é inválido. Revise os dados fornecidos.", ex.getMessage());
+    }
+	
+	@ExceptionHandler
+    @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
+    @ResponseBody
+    JsonApiError handleException(ConstraintViolationException ex) {
+        return new JsonApiError("O conteúdo da requisição é inválido. Revise os dados fornecidos.", ex.getSQLException().getMessage());
+    }
+	
+	@ExceptionHandler
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ResponseBody
+    JsonApiError handleException(NotFoundException ex) {
+        return new JsonApiError("Recurso não encontrado.", ex.getMessage());
     }
 }

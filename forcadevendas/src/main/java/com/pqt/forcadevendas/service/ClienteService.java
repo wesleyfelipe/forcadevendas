@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.ws.rs.NotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,7 +42,7 @@ public class ClienteService implements IClienteService {
 	public ClienteDTO getCliente(int id) {
 		Cliente cliente = dao.getCliente(id);
 		if (cliente == null)
-			return null;
+			throw new NotFoundException("Cliente com identificador " + id + " não existe.");
 		return buildClienteDtoFromCliente(cliente);
 	}
 
@@ -62,8 +64,8 @@ public class ClienteService implements IClienteService {
 	@Override
 	public ClienteDTO updateCliente(Integer idCliente, ClienteDTO clienteDto) {
 		Cliente cliente = dao.getCliente(idCliente);
-		if(clienteDto == null || cliente == null)
-			return null;
+		if(cliente == null)
+			throw new NotFoundException("Cliente com identificador " + idCliente + " não existe.");
 		updateClienteFromClienteDto(cliente, clienteDto);
 		dao.updateCliente(cliente);
 		return buildClienteDtoFromCliente(cliente);
