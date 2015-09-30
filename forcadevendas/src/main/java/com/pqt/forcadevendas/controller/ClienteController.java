@@ -14,29 +14,29 @@ import com.pqt.forcadevendas.entity.to.ClienteDadosBasicosDTO;
 import com.pqt.forcadevendas.service.IClienteService;
 
 @RestController
-@RequestMapping(value="/recursos/cliente")
-public class ClienteController{
+@RequestMapping(value = "/recursos/cliente")
+public class ClienteController {
 
 	@Autowired
 	private IClienteService service;
-	
-	@RequestMapping(method=RequestMethod.GET, produces="application/json")
-	public List<ClienteDadosBasicosDTO> listClientes(){
+
+	@RequestMapping(method = RequestMethod.GET, produces = "application/json")
+	public List<ClienteDadosBasicosDTO> listClientes() {
 		return service.listClientes();
 	}
-	
-	@RequestMapping(method=RequestMethod.GET, produces="application/json", value="/{id}")
-	public ClienteDTO getCliente(@PathVariable("id") Integer id){
+
+	@RequestMapping(method = RequestMethod.GET, produces = "application/json", value = "/{id}")
+	public ClienteDTO getCliente(@PathVariable("id") Integer id) {
 		return service.getCliente(id);
 	}
-	
-	@RequestMapping(method = RequestMethod.POST, produces = "application/json")
-	public ClienteDTO persistCliente(@RequestBody ClienteDTO dto){
+
+	@RequestMapping(method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
+	public ClienteDTO persistCliente(@RequestBody ClienteDTO dto) {
 		return service.persistCliente(dto);
 	}
-	
-	@RequestMapping(method = RequestMethod.PUT, produces = "application/json", value="/{id}")
-	public ClienteDTO updateCliente(@PathVariable("id") Integer id, @RequestBody ClienteDTO dto){
+
+	@RequestMapping(method = RequestMethod.PUT, consumes = "application/json", produces = "application/json", value = "/{id}")
+	public ClienteDTO updateCliente(@PathVariable("id") Integer id, @RequestBody ClienteDTO dto) {
 		return service.updateCliente(id, dto);
 	}
 }

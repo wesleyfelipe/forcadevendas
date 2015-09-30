@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.pqt.forcadevendas.configuration.security.TokenUtils;
 import com.pqt.forcadevendas.entity.to.TokenDTO;
 import com.pqt.forcadevendas.entity.to.UsuarioDTO;
+import com.pqt.forcadevendas.security.TokenUtils;
 import com.pqt.forcadevendas.service.IRepresentanteService;
 
 @RestController
@@ -27,7 +27,7 @@ public class AcessoController {
 	@Qualifier("authenticationManager")
 	private AuthenticationManager authManager;
 
-	@RequestMapping(method = RequestMethod.POST, produces = "application/json", value = "/login")
+	@RequestMapping(method = RequestMethod.POST, consumes = "application/json", produces = "application/json", value = "/login")
 	public TokenDTO authenticate(@RequestBody UsuarioDTO usuario) {
 		UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
 				usuario.getUsername(), usuario.getPassword());

@@ -1,4 +1,4 @@
-package com.pqt.forcadevendas.configuration.security;
+package com.pqt.forcadevendas.security;
 
 import java.io.IOException;
 

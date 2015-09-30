@@ -39,10 +39,10 @@
 	</security:http>
 
 	<bean id="unauthorizedEntryPoint"
-		class="com.pqt.forcadevendas.configuration.security.UnauthorizedEntryPoint" />
+		class="com.pqt.forcadevendas.security.UnauthorizedEntryPoint" />
 
 	<bean
-		class="com.pqt.forcadevendas.configuration.security.AuthenticationTokenProcessingFilter"
+		class="com.pqt.forcadevendas.security.AuthenticationTokenProcessingFilter"
 		id="authenticationTokenProcessingFilter">
 		<constructor-arg ref="representanteService" />
 	</bean>
