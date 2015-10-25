@@ -1,10 +1,47 @@
 <div class="container">
     <div class="page-header">
+        <button type="button" class="btn btn-default pull-right" data-toggle="collapse" data-target="#filtroClientes">
+            <span class="glyphicon glyphicon-search"></span>
+            Filtro
+        </button>
         <h2>Clientes</h2>
     </div>
 
+    <div id="filtroClientes" class="collapse">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <form>
+                    <div class="form-group">
+                        <label for="filtroCodigo">Código</label>
+                        <input type="text" id="filtroCodigo" class="form-control" placeholder="Código" ng-model="searchId" />
+                    </div>
+                    <div class="form-group">
+                        <label for="filtroNome">Nome</label>
+                        <input type="text" id="filtroNome" class="form-control" placeholder="Nome" ng-model="searchNome" />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Status</label>
+                        <select class="form-control" ng-model="searchStatus" >
+                            <option value="">Ambos</option>
+                            <option value="Ativo">Ativo</option>
+                            <option value="Inativo">Inativo</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="filtroCNPJ">CNPJ</label>
+                        <input type="text" id="filtroCNPJ" class="form-control" placeholder="CNPJ" ng-model="searchCnpj" />
+                    </div>
+                </form>
+                <div class="pull-right">
+                    <button type="button" class="btn btn-default" ng-click="cleanFilter()">Limpar</button>
+                    <button type="button" class="btn btn-primary" ng-click="applyFilter()">Filtrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <div class="list-group">
-        <a href="#" class="list-group-item" ng-repeat="cliente in clientes">
+        <a href="#" class="list-group-item" ng-repeat="cliente in clientes | filter: search | filterByStatus: statusFilter">
             <h4 class="list-item-heading">{{cliente.nome}}</h4>
             <p class="list-group-item-text">#{{cliente.id}} - <span class="label" ng-class="getStatusClass('{{cliente.status}}')">{{cliente.status}}</span></p>
             <p class="list-gorup-item-text">

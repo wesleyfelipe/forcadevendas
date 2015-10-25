@@ -37,6 +37,10 @@
 
         $scope.clientes = mockClients;
 
+        $scope.ui = {
+            filtroAberto: false
+        };
+
         $scope.getStatusClass = function getStatusClass(status) {
             if (status === 'Ativo') {
                 return 'label-success';
@@ -48,5 +52,48 @@
 
             return 'label-default';
         };
+
+        $scope.onFiltroClick = function onFiltroClick() {
+            $scope.ui.filtroAberto = !$scope.ui.filtroAberto;
+        };
+
+        $scope.applyFilter = function applyFilter() {
+            var searchId = $scope.searchId,
+                nome = $scope.searchNome,
+                cnpj = $scope.searchCnpj,
+                searchStatus = $scope.searchStatus;
+
+            $scope.search = {
+                id: searchId,
+                nome: nome,
+                cnpj: cnpj
+            };
+
+            $scope.statusFilter = searchStatus;
+        };
+
+        $scope.cleanFilter = function cleanFilter() {
+            $scope.search = {};
+            $scope.statusFilter = '';
+
+            $scope.searchId = '';
+            $scope.searchNome = '';
+            $scope.searchStatus = '';
+            $scope.searchCnpj = '';
+        };
     }]);
+
+    clientesModule.filter('filterByStatus', function() {
+        return function(clientes, param) {
+            var results = [];
+
+            clientes.forEach(function(cliente) {
+                if (!param || cliente.status === param) {
+                    results.push(cliente);
+                }
+            });
+
+            return results;
+        };
+    })
 })(angular);
