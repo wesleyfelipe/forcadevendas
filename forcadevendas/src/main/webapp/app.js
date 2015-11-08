@@ -27,6 +27,10 @@
                 templateUrl: 'clientes/clientes.html',
                 controller: 'ClientesController'
             })
+            .when('/cadastroClientes', {
+        		templateUrl: 'clientes/cadastroClientes.html',
+        		controller: 'CadastroController'
+            })
             .otherwise({
                 redirectTo: '/login'
             });
