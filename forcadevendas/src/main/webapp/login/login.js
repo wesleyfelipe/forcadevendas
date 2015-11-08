@@ -14,12 +14,6 @@
                     }
                 });
             };
-
-            $scope.doSomething = function() {
-                $http.get('/rest/recursos/cliente').success(function(response) {
-                    console.log('Behold the data', response);
-                });
-            };
         }
     ]);
 
