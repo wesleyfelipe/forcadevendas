@@ -11,9 +11,14 @@
             when('/clientes', {
                 templateUrl: 'clientes/clientes.html',
                 controller: 'ClientesController'
-            }).
-            otherwise({
+            })
+            .when('/cadastroClientes', {
+        		templateUrl: 'clientes/cadastroClientes.html',
+        		controller: 'CadastroController'
+            })
+            .otherwise({
                 redirectTo: '/clientes'
             });
-    }]);
+    }]); 
+    
 })(angular, window);
