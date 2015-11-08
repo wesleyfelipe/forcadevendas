@@ -22,6 +22,10 @@
                         }.bind(this));
                 },
 
+                logout: function(callback) {
+                    clearCredentials();
+                    callback();
+                },
 
                 setCredentials: function(user, token) {
                     $rootScope.global = {

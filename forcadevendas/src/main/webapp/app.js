@@ -2,6 +2,7 @@
     window.ForcaDeVendas = {
         app: angular.module('forcaDeVendas', [
             'ngRoute',
+            'ngCookies',
             'forcaDeVendas.clientes',
             'forcaDeVendas.login',
             'forcaDeVendas.Home'
@@ -9,8 +10,6 @@
     };
 
     ForcaDeVendas.app.config(['$routeProvider', function($routeProvider) {
-        $routeProvider.
-            
         $routeProvider
             .when('/', {
                 templateUrl: 'home/home.html',
@@ -20,9 +19,14 @@
                 templateUrl: 'login/login.html',
                 controller: 'LoginController'
             })
+            .when('/logout', {
+                template: ' ',
+                controller: 'LogoutController'
+            })
             .when('/clientes', {
                 templateUrl: 'clientes/clientes.html',
                 controller: 'ClientesController'
+            })
             .otherwise({
                 redirectTo: '/login'
             });

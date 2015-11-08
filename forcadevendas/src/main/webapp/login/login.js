@@ -22,4 +22,12 @@
             };
         }
     ]);
+
+    loginModule.controller('LogoutController', ['$location', 'AuthenticationService', 
+        function($location, AuthenticationService) {
+            AuthenticationService.logout(function() {
+                $location.path('/login');
+            });
+        }
+    ]);
 })(angular);
