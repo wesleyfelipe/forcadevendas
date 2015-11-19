@@ -22,9 +22,23 @@
             };
 
             $scope.login = function login() {
+                $scope.submitted = true;
+
+                if ($scope.loginForm.$invalid) return;
+
                 AuthenticationService.login($scope.credentials.username, $scope.credentials.password, 
                     onLoginSuccess, onLoginError);
             };
+
+            $scope.getInvalidClass = function getInvalidClass(modelName) {
+                var field = $scope.loginForm[modelName];
+
+                if (field.$invalid && (!field.$pristine || $scope.submitted)) {
+                    return 'has-error';
+                }
+
+                return '';
+            }
         }
     ]);
 
