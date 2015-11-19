@@ -10,7 +10,7 @@
                 };
 
             return {
-                login: function(user, password, callback) {
+                login: function(user, password, successCallback, errorCallback) {
                     var credentials = {
                         username: user,
                         password: password
@@ -18,8 +18,11 @@
 
                     $http.post('/rest/login', credentials)
                         .success(function(response) {
-                            callback(response);
-                        }.bind(this));
+                            successCallback(response);
+                        }.bind(this))
+                        .error(function(response, status) {
+                            errorCallback(response);
+                        });
                 },
 
                 logout: function(callback) {

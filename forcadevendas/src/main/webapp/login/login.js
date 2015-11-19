@@ -4,15 +4,26 @@
     loginModule.controller('LoginController', ['$scope', '$http', '$location', 'AuthenticationService',
         function($scope, $http, $location, AuthenticationService) {
             $scope.credentials = {};
+            $scope.ui = {
+                error: false
+            };
+
+            var onLoginSuccess = function onLoginSuccess(response) {
+                if (response.token) {
+                    AuthenticationService.setCredentials($scope.credentials.username, response.token);
+                    $location.path('/');
+                } else {
+                    $scope.ui.error = true;
+                }
+            },
+
+            onLoginError = function onLoginError(response) {
+                $scope.ui.error = true;
+            };
 
             $scope.login = function login() {
-                AuthenticationService.login($scope.credentials.username, $scope.credentials.password, function(response) {
-                    if (response.token) {
-                        AuthenticationService.setCredentials($scope.credentials.username, response.token);
-                        console.log('You\'re logged in');
-                        $location.path('/');
-                    }
-                });
+                AuthenticationService.login($scope.credentials.username, $scope.credentials.password, 
+                    onLoginSuccess, onLoginError);
             };
         }
     ]);
