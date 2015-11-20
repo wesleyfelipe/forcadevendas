@@ -3,6 +3,7 @@
         app: angular.module('forcaDeVendas', [
             'ngRoute',
             'ngCookies',
+            'ngResource',
             'forcaDeVendas.clientes',
             'forcaDeVendas.login',
             'forcaDeVendas.Home'
