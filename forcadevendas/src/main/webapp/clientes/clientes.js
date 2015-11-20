@@ -72,7 +72,7 @@
             var results = [];
 
             clientes.forEach(function(cliente) {
-                if (!param || cliente.status === param) {
+                if (!param || cliente.situacao === param) {
                     results.push(cliente);
                 }
             });
