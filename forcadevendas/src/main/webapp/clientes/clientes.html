@@ -45,7 +45,7 @@
             <h4 class="list-item-heading">{{cliente.nome}}</h4>
             <p class="list-group-item-text">#{{cliente.id}} - <span class="label" ng-class="getStatusClass('{{cliente.situacao}}')" ng-bind="getSituacaoText(cliente.situacao)"></span></p>
             <p class="list-gorup-item-text">
-                <small>{{cliente.cnpj}}</small>
+                <small ng-bind="formatCNPJ(cliente.cnpj)"></small>
             </p>
         </a>
     </div>

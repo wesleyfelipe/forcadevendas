@@ -33,6 +33,10 @@
                 return 'Inativo';
             };
 
+            $scope.formatCNPJ = function formatCNPJ(cnpj) {
+                return cnpj.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/g,"\$1.\$2.\$3\/\$4\-\$5");
+            };
+
             $scope.onFiltroClick = function onFiltroClick() {
                 $scope.ui.filtroAberto = !$scope.ui.filtroAberto;
             };
