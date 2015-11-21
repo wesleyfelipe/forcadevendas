@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,18 +19,17 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-
 /**
  * The persistent class for the representante database table.
  * 
  */
 @Entity
-@Table(schema="FDV_ONLINE")
+@Table(schema = "FDV_ONLINE")
 public class Representante implements Serializable, UserDetails {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
 	private String cpf;
@@ -48,21 +48,25 @@ public class Representante implements Serializable, UserDetails {
 
 	private String situacao;
 
-	//bi-directional many-to-one association to Representacao
-	@OneToMany(mappedBy="representante")
+	// bi-directional many-to-one association to Representacao
+	@OneToMany(mappedBy = "representante")
 	private List<Representacao> representacoes;
 
-	//bi-directional many-to-one association to Representanterole
-	@OneToMany(mappedBy="representante")
+	// bi-directional many-to-one association to Representanterole
+	@OneToMany(mappedBy = "representante")
 	private List<RepresentanteRole> representanteRoles;
 
-	//bi-directional many-to-one association to Supervisao
-	@OneToMany(mappedBy="supervisor")
+	// bi-directional many-to-one association to Supervisao
+	@OneToMany(mappedBy = "supervisor")
 	private List<Supervisao> supervisoes;
 
-	//bi-directional many-to-one association to Supervisao
-	@OneToMany(mappedBy="representante")
+	// bi-directional many-to-one association to Supervisao
+	@OneToMany(mappedBy = "representante")
 	private List<Supervisao> supervisadoPor;
+
+	// bi-directional many-to-one association to ItemPedido
+	@OneToMany(mappedBy = "representante", cascade = CascadeType.ALL)
+	private List<Pedido> pedidos;
 
 	public Representante() {
 	}
@@ -226,10 +230,32 @@ public class Representante implements Serializable, UserDetails {
 
 		return supervisadoPor;
 	}
+	
+	public List<Pedido> getPedidos() {
+		return pedidos;
+	}
+	
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
+	}
+	
+	public Pedido addPedido(Pedido pedido) {
+		getPedidos().add(pedido);
+		pedido.setRepresentante(this);
+
+		return pedido;
+	}
+
+	public Pedido removePedido(Pedido pedido) {
+		getPedidos().remove(pedido);
+		pedido.setRepresentante(null);
+
+		return pedido;
+	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		
+
 		if (representanteRoles == null) {
 			return Collections.emptyList();
 		}
@@ -269,8 +295,10 @@ public class Representante implements Serializable, UserDetails {
 
 	@Override
 	public boolean isEnabled() {
-		//TODO: adicionar um enum no lugar do 'A'
+		// TODO: adicionar um enum no lugar do 'A'
 		return situacao.equalsIgnoreCase("A");
 	}
+	
+	
 
 }

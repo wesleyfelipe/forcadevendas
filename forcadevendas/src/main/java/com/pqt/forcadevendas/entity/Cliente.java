@@ -5,18 +5,17 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-
 /**
  * The persistent class for the cliente database table.
  * 
  */
 @Entity
-@Table(schema="FDV_ONLINE")
+@Table(schema = "FDV_ONLINE")
 public class Cliente implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
 	private String cnpj;
@@ -34,14 +33,18 @@ public class Cliente implements Serializable {
 
 	private String situacao;
 
-	//bi-directional many-to-one association to Endereco
-	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="idenderecocomercial")
+	// bi-directional many-to-one association to Endereco
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "idenderecocomercial")
 	private Endereco endereco;
 
-	//bi-directional many-to-one association to Enderecoentrega
-	@OneToMany(mappedBy="cliente", cascade=CascadeType.ALL)
+	// bi-directional many-to-one association to Enderecoentrega
+	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
 	private List<EnderecoEntrega> enderecoentregas;
+
+	// bi-directional many-to-one association to ItemPedido
+	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+	private List<Pedido> pedidos;
 
 	public Cliente() {
 	}
@@ -139,5 +142,26 @@ public class Cliente implements Serializable {
 
 		return enderecoentrega;
 	}
+	
+	public List<Pedido> getPedidos() {
+		return pedidos;
+	}
+	
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
+	}
+	
+	public Pedido addPedido(Pedido pedido) {
+		getPedidos().add(pedido);
+		pedido.setCliente(this);
 
+		return pedido;
+	}
+
+	public Pedido removePedido(Pedido pedido) {
+		getPedidos().remove(pedido);
+		pedido.setCliente(null);
+
+		return pedido;
+	}
 }
