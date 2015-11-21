@@ -1,4 +1,4 @@
-var clientesModule = angular.module('forcaDeVendas.clientes', []);
+var clientesModule = angular.module('forcaDeVendas.clientes');
 clientesModule.controller('CadastroController', ['$http','$scope', function ($http, $scope){
 	$scope.cliente = {};
 	$scope.cadastrar = function(){	
@@ -22,4 +22,3 @@ clientesModule.controller('CadastroController', ['$http','$scope', function ($ht
 		});
 	};
 }])
-
