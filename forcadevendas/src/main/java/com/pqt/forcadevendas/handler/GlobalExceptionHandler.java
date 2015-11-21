@@ -1,5 +1,7 @@
 package com.pqt.forcadevendas.handler;
 
+import java.security.AccessControlException;
+
 import javax.ws.rs.NotFoundException;
 
 import org.hibernate.exception.ConstraintViolationException;
@@ -29,11 +31,15 @@ public class GlobalExceptionHandler {
     }
 	
 	@ExceptionHandler
-    @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
     @ResponseBody
     JsonApiError handleException(HttpMessageNotReadableException ex) {
         return new JsonApiError("O conteúdo da requisição é inválido. Revise os dados fornecidos.", ex.getMessage());
     }
+	
+	JsonApiError handleException(AccessControlException ex){
+		return new JsonApiError("Acesso negado para o recurso.", ex.getMessage());
+	}
 	
 	@ExceptionHandler
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)

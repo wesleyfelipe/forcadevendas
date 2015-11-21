@@ -109,5 +109,10 @@ public class Produto implements Serializable {
 	public void setModelo(Modelo modelo) {
 		this.modelo = modelo;
 	}
+	
+
+	public BigDecimal getPrecoValido(){
+		return precoPromocao != null ? precoPromocao : preco;
+	}
 
 }

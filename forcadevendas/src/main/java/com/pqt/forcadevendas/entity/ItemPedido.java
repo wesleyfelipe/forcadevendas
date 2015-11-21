@@ -72,5 +72,4 @@ public class ItemPedido implements Serializable {
 	public void setPedido(Pedido pedido) {
 		this.pedido = pedido;
 	}
-
 }
