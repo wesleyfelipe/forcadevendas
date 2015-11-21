@@ -6,12 +6,12 @@ import java.util.List;
 
 
 /**
- * The persistent class for the marca database table.
+ * The persistent class for the categoria database table.
  * 
  */
 @Entity
 @Table(schema="FDV_ONLINE")
-public class Marca implements Serializable {
+public class Categoria implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -21,10 +21,10 @@ public class Marca implements Serializable {
 	private String nome;
 
 	//bi-directional many-to-one association to Modelo
-	@OneToMany(mappedBy="marca")
+	@OneToMany(mappedBy="categoria")
 	private List<Modelo> modelos;
 
-	public Marca() {
+	public Categoria() {
 	}
 
 	public Integer getId() {
@@ -53,14 +53,14 @@ public class Marca implements Serializable {
 
 	public Modelo addModelo(Modelo modelo) {
 		getModelos().add(modelo);
-		modelo.setMarca(this);
+		modelo.setCategoria(this);
 
 		return modelo;
 	}
 
 	public Modelo removeModelo(Modelo modelo) {
 		getModelos().remove(modelo);
-		modelo.setMarca(null);
+		modelo.setCategoria(null);
 
 		return modelo;
 	}
