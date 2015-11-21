@@ -7,4 +7,5 @@ import com.pqt.forcadevendas.entity.Produto;
 public interface IProdutoDAO {
 
 	public List<Produto> listProdutos();
+	public Produto getProduto(Integer id);
 }

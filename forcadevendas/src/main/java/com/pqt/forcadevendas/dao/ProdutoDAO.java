@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,5 +27,11 @@ public class ProdutoDAO implements IProdutoDAO{
 	public List<Produto> listProdutos() {
 		return getCurrentSession().createQuery("from " + Produto.class.getSimpleName()).list();
 	}
+    
+    @Override
+    public Produto getProduto(Integer id){
+    	return (Produto) getCurrentSession().createCriteria(Produto.class)
+				.add(Restrictions.eq("id", id)).uniqueResult();
+    }
 
 }
