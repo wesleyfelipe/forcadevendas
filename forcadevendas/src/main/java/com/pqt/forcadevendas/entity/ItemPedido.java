@@ -41,7 +41,7 @@ public class ItemPedido implements Serializable {
 		this.id = id;
 	}
 
-	public Produto getIdproduto() {
+	public Produto getProduto() {
 		return this.produto;
 	}
 
