@@ -1,9 +1,21 @@
 package com.pqt.forcadevendas.entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * The persistent class for the pedido database table.
@@ -18,8 +30,9 @@ public class Pedido implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "data_pedido")
-	private Timestamp dataPedido;
+	private Date dataPedido;
 
 	// bi-directional many-to-one association to Cliente
 	@ManyToOne
@@ -46,11 +59,11 @@ public class Pedido implements Serializable {
 		this.id = id;
 	}
 
-	public Timestamp getDataPedido() {
+	public Date getDataPedido() {
 		return this.dataPedido;
 	}
 
-	public void setDataPedido(Timestamp dataPedido) {
+	public void setDataPedido(Date dataPedido) {
 		this.dataPedido = dataPedido;
 	}
 

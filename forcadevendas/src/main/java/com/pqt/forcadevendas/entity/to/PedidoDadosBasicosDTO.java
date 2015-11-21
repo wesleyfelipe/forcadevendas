@@ -3,11 +3,14 @@ package com.pqt.forcadevendas.entity.to;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class PedidoDadosBasicosDTO {
 
 	private Integer id;
 	private String nomeCliente;
 	private String nomeRepresentante;
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy HH:mm")
 	private Date dataCriacao;
 	private BigDecimal totalPedido;
 
