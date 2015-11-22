@@ -39,6 +39,9 @@ public class GlobalExceptionHandler {
         return new JsonApiError("O conteúdo da requisição é inválido. Revise os dados fornecidos.", ex.getMessage());
     }
 	
+	@ExceptionHandler
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    @ResponseBody
 	JsonApiError handleException(AccessControlException ex){
 		return new JsonApiError("Acesso negado para o recurso.", ex.getMessage());
 	}
