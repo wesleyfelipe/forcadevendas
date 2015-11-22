@@ -9,5 +9,5 @@ public interface IPedidoService {
 
 	public List<PedidoDadosBasicosDTO> listPedidos();
 	public PedidoDTO getPedido(Integer id);
-	public PedidoDTO persistPedido(PedidoDTO pedidoDto);
+	public PedidoDTO persistPedido(PedidoDTO pedidoDto) throws Exception;
 }

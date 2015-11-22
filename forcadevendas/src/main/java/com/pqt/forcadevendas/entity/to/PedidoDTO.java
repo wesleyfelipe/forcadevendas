@@ -6,10 +6,13 @@ import java.util.Date;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class PedidoDTO {
 
 	private Integer id;
+	@JsonProperty(required=true)
+	private Integer idCliente;
 	private String nomeCliente;
 	private String nomeRepresentante;
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy HH:mm")
@@ -21,13 +24,14 @@ public class PedidoDTO {
 	}
 	
 	public PedidoDTO(Integer id, String nomeCliente, String nomeRepresentante, Date dataCriacao,
-			BigDecimal totalPedido) {
+			BigDecimal totalPedido, Integer idCliente) {
 		super();
 		this.id = id;
 		this.nomeCliente = nomeCliente;
 		this.nomeRepresentante = nomeRepresentante;
 		this.dataCriacao = dataCriacao;
 		this.totalPedido = totalPedido;
+		this.idCliente = idCliente;
 	}
 
 	public Integer getId() {
@@ -78,4 +82,11 @@ public class PedidoDTO {
 		this.itensPedido = itensPedido;
 	}
 	
+	public Integer getIdCliente() {
+		return idCliente;
+	}
+	
+	public void setIdCliente(Integer idCliente) {
+		this.idCliente = idCliente;
+	}
 }

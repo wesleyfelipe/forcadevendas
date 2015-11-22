@@ -2,14 +2,20 @@ package com.pqt.forcadevendas.entity.to;
 
 import java.math.BigDecimal;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class ItemPedidoDTO {
 
+	@JsonProperty(required = true)
 	private Integer idProduto;
 	private String produto;
 	private String marca;
 	private BigDecimal preco;
 	private Integer quantidade;
 	private String tamanho;
+	
+	public ItemPedidoDTO(){
+	}
 	
 	public ItemPedidoDTO(Integer idProduto, String produto, String marca, BigDecimal preco, Integer quantidade,
 			String tamanho) {
@@ -54,6 +60,7 @@ public class ItemPedidoDTO {
 		this.preco = preco;
 	}
 
+	@JsonProperty(required=true)
 	public Integer getQuantidade() {
 		return quantidade;
 	}
@@ -62,6 +69,7 @@ public class ItemPedidoDTO {
 		this.quantidade = quantidade;
 	}
 
+	@JsonProperty(required=true)
 	public String getTamanho() {
 		return tamanho;
 	}

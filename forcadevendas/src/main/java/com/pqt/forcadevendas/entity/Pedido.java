@@ -1,9 +1,11 @@
 package com.pqt.forcadevendas.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -44,8 +46,8 @@ public class Pedido implements Serializable {
 	private Representante representante;
 
 	// bi-directional many-to-one association to ItemPedido
-	@OneToMany(mappedBy = "pedido")
-	private List<ItemPedido> itemPedidos;
+	@OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<ItemPedido> itemPedidos = new ArrayList<ItemPedido>();
 
 	public Pedido() {
 	}

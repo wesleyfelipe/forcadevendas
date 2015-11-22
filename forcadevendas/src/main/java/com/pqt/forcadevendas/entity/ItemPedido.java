@@ -32,6 +32,13 @@ public class ItemPedido implements Serializable {
 
 	public ItemPedido() {
 	}
+	
+	public ItemPedido(Produto produto, Integer quantidade, String tamanho) {
+		super();
+		this.produto = produto;
+		this.quantidade = quantidade;
+		this.tamanho = tamanho;
+	}
 
 	public Integer getId() {
 		return this.id;
