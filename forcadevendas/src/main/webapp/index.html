@@ -7,7 +7,11 @@
 
     <title>Força de Vendas</title>
 
-    <link href="libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link href="pages/css/bootstrap.min.css" rel="stylesheet">
+    <link href="pages/css/font-awesome.min.css" rel="stylesheet">
+    <link href="pages/css/animate.css" rel="stylesheet">
+    <link href="pages/css/main.css" rel="stylesheet">
+    <link href="pages/css/responsive.css" rel="stylesheet">
 
     <script src="libs/angular/angular.min.js"></script>
     <script src="libs/angular/angular-route.min.js"></script>
@@ -15,15 +19,18 @@
     <script src="libs/angular/angular-resource.min.js"></script>
 </head>
 <body>
+    <div header></div>
     <div ng-view></div>
 
     <script src="libs/jquery/jquery-2.1.4.min.js"></script>
-    <script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+    <script src="pages/js/bootstrap.min.js"></script>
 
     <script src="app.js"></script>
     <script src="services/authentication.service.js"></script>
     <script src="login/login.js"></script>
     <script src="home/home.js"></script>
+
+    <script src="header/header.js"></script>
     
     <script src="services/cliente.service.js"></script>
     <script src="clientes/clientes.js"></script>

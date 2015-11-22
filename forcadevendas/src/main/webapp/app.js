@@ -14,7 +14,10 @@
         $routeProvider
             .when('/', {
                 templateUrl: 'home/home.html',
-                controller: 'HomeController'
+                controller: 'HomeController',
+                data: {
+                    headerPage: 1
+                }
             })
             .when('/login', {
                 templateUrl: 'login/login.html',
@@ -26,7 +29,10 @@
             })
             .when('/clientes', {
                 templateUrl: 'clientes/clientes.html',
-                controller: 'ClientesController'
+                controller: 'ClientesController',
+                data: {
+                    headerPage: 2
+                }
             })
             .when('/cadastroClientes', {
         		templateUrl: 'clientes/cadastroClientes.html',
