@@ -1,8 +1,12 @@
 package com.pqt.forcadevendas.handler;
 
+import java.security.AccessControlException;
+import java.security.UnrecoverableKeyException;
+
 import javax.ws.rs.NotFoundException;
 
 import org.hibernate.exception.ConstraintViolationException;
+import org.hibernate.metamodel.ValidationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -29,11 +33,18 @@ public class GlobalExceptionHandler {
     }
 	
 	@ExceptionHandler
-    @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
     @ResponseBody
     JsonApiError handleException(HttpMessageNotReadableException ex) {
         return new JsonApiError("O conteúdo da requisição é inválido. Revise os dados fornecidos.", ex.getMessage());
     }
+	
+	@ExceptionHandler
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    @ResponseBody
+	JsonApiError handleException(AccessControlException ex){
+		return new JsonApiError("Acesso negado para o recurso.", ex.getMessage());
+	}
 	
 	@ExceptionHandler
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
@@ -41,6 +52,20 @@ public class GlobalExceptionHandler {
     JsonApiError handleException(ConstraintViolationException ex) {
         return new JsonApiError("O conteúdo da requisição é inválido. Revise os dados fornecidos.", ex.getSQLException().getMessage());
     }
+	
+	@ExceptionHandler
+    @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
+    @ResponseBody
+	JsonApiError handleException(UnrecoverableKeyException ex){
+		return new JsonApiError("O conteúdo da requisição é inválido. Revise os dados fornecidos.", ex.getMessage());
+	}
+	
+	@ExceptionHandler
+    @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
+    @ResponseBody
+	JsonApiError handleException(ValidationException ex){
+		return new JsonApiError("O conteúdo da requisição é inválido. Revise os dados fornecidos.", ex.getMessage());
+	}
 	
 	@ExceptionHandler
     @ResponseStatus(HttpStatus.NOT_FOUND)
