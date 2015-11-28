@@ -42,9 +42,13 @@
     
     <div class="list-group">
         <a href="#" class="list-group-item" ng-repeat="cliente in clientes | filter: search | filterByStatus: statusFilter">
-            <h4 class="list-item-heading">{{cliente.nome}}</h4>
-            <p class="list-group-item-text">#{{cliente.id}} - <span class="label" ng-class="getStatusClass('{{cliente.situacao}}')" ng-bind="getSituacaoText(cliente.situacao)"></span></p>
-            <p class="list-gorup-item-text">
+            <h4 class="list-item-heading">
+                {{cliente.id}} - {{cliente.nome}}
+                <span>
+                    <span class="label pull-right" ng-class="getStatusClass('{{cliente.situacao}}')" ng-bind="getSituacaoText(cliente.situacao)"></span>    
+                </span>
+            </h4>
+            <p class="list-group-item-text">
                 <small ng-bind="formatCNPJ(cliente.cnpj)"></small>
             </p>
         </a>
