@@ -3,8 +3,6 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Cadastro do cliente</title>
-	<link rel="stylesheet" href="https://bootswatch.com/superhero/bootstrap.min.css">
-</head>
 <body>
 <div style="margin: 0 auto; width: 700px; height: 650px;">
 <form  class="form-horizontal" method="post">
@@ -20,16 +18,16 @@
 	</div>
 
 	<div class="form-group">
-		<label class="col-sm-2 control-label">CNPJ</label>
+		<label class="col-sm-2 control-label">Email</label>
 		<div class="col-sm-10">
-			<input name ="cnpj" type="number" class="form-control" required="required" ng-model="cliente.cnpj">
+			<input name ="email" type="email" class="form-control" required="required"  ng-model="cliente.email">
 		</div>
 	</div>
 
 	<div class="form-group">
-		<label class="col-sm-2 control-label">Email</label>
+		<label class="col-sm-2 control-label">CNPJ</label>
 		<div class="col-sm-10">
-			<input name ="email" type="email" class="form-control" required="required"  ng-model="cliente.email">
+			<input name ="cnpj" type="text" class="form-control" required pattern="([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})" ng-model="cliente.cnpj">
 		</div>
 	</div>
 
@@ -62,31 +60,31 @@
 	</div>
 
 	<div class="form-group">
+		<label class="col-sm-2 control-label">CEP</label>
+		<div class="col-sm-10">
+			<input name ="cep" type="text" class="form-control" required pattern="^\d{5}\-?\d{3}$" ng-model="cliente.cep">
+		</div>
+	</div>
+
+	<div class="form-group">
 		<label class="col-sm-2 control-label">Cidade</label>
 		<p class="col-sm-10">
-			<input name ="cidade" type="text" class="form-control" required="required" ng-model="cliente.cidade">
+			<select name="cidade" class="form-control" ng-model="cliente.cidade" ng-options="cidade.nome for cidade in cidades"></select>
 		</p>
 		
 	</div>
 
 	<div class="form-group">
-		<label class="col-sm-2 control-label">CEP</label>
-		<div class="col-sm-10">
-			<input name ="cep" type="number" class="form-control" required="required" ng-model="cliente.cep">
-		</div>
-	</div>
-
-	<div class="form-group">
 		<label class="col-sm-2 control-label">Estado</label>
 		<div class="col-sm-10">
-			<input name ="estado" type="text" class="form-control" required="required" ng-model="cliente.estado">
+			<select name="estado" class="form-control" ng-model="cliente.estado" ng-options="estado.nome for estado in estados" ng-change="getCidades(cliente.estado.id)"></select>
 		</div>
 	</div>
 
 	<div class="form-group">
 		<label class="col-sm-2 control-label">País</label>
 		<div class="col-sm-10">
-			<input name ="pais" type="text" class="form-control" required="required" ng-model="cliente.pais">
+			<select name ="pais" class="form-control" ng-model="cliente.pais" ng-options="pais.nome for pais in paises" ng-change="getEstados(cliente.pais.id)"></select>
 		</div>
 	</div>
 	
@@ -94,7 +92,7 @@
 		<button type="submit" class="btn btn-primary" ng-click="cadastrar()">Cadastrar cliente</button>
 </form>
 <div class="form-group">
-	<a class="btn btn-danger logout" href="logout">Cancelar</a>
+	<a class="btn btn-danger" href="#/home">Cancelar</a>
 </div>
 </div>
 </body>
