@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Cadastro do cliente</title>
+	<link rel="stylesheet" href="https://bootswatch.com/superhero/bootstrap.min.css">
+</head>
+<body>
+<div style="margin: 0 auto; width: 700px; height: 650px;">
+<form  class="form-horizontal" method="post">
+
+	<h1 class="form-signin-heading">Força de Venda</h1>
+	<br><br><br>
+
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Nome</label>
+		<div class="col-sm-10">
+			<input name ="nome" type="text" class="form-control" required="required"  ng-model="cliente.nome">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-sm-2 control-label">CNPJ</label>
+		<div class="col-sm-10">
+			<input name ="cnpj" type="number" class="form-control" required="required" ng-model="cliente.cnpj">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Email</label>
+		<div class="col-sm-10">
+			<input name ="email" type="email" class="form-control" required="required"  ng-model="cliente.email">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Telefone</label>
+		<div class="col-sm-10">
+			<input name ="telefone" type="tel" class="form-control" required="required" ng-model="cliente.telefone">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Endereço</label>
+		<div class="col-sm-10">
+			<input name ="endereco" type="text" class="form-control" required="required" ng-model="cliente.endereco">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Número</label>
+		<div class="col-sm-10">
+			<input name ="numero" type="number" class="form-control" required="required" ng-model="cliente.numero">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Complemento</label>
+		<div class="col-sm-10">
+			<input name ="complemento" type="text" class="form-control" ng-model="cliente.complemento">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Cidade</label>
+		<p class="col-sm-10">
+			<input name ="cidade" type="text" class="form-control" required="required" ng-model="cliente.cidade">
+		</p>
+		
+	</div>
+
+	<div class="form-group">
+		<label class="col-sm-2 control-label">CEP</label>
+		<div class="col-sm-10">
+			<input name ="cep" type="number" class="form-control" required="required" ng-model="cliente.cep">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Estado</label>
+		<div class="col-sm-10">
+			<input name ="estado" type="text" class="form-control" required="required" ng-model="cliente.estado">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-sm-2 control-label">País</label>
+		<div class="col-sm-10">
+			<input name ="pais" type="text" class="form-control" required="required" ng-model="cliente.pais">
+		</div>
+	</div>
+	
+	<br>
+		<button type="submit" class="btn btn-primary" ng-click="cadastrar()">Cadastrar cliente</button>
+</form>
+<div class="form-group">
+	<a class="btn btn-danger logout" href="logout">Cancelar</a>
+</div>
+</div>
+</body>
+</html>
