@@ -6,7 +6,8 @@
             'ngResource',
             'forcaDeVendas.clientes',
             'forcaDeVendas.login',
-            'forcaDeVendas.Home'
+            'forcaDeVendas.Home',
+            'forcaDeVendas.catalogo'
         ])
     };
 
