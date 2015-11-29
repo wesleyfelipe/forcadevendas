@@ -84,6 +84,14 @@
 									return results;
 								}
 
+								$scope.cleanFilter = function() {
+									$scope.filter = {
+										marca : '',
+										categoria : '',
+										departamento : ''
+									}
+								}
+
 								// Paginação
 								$scope.currentPage = 0;
 								$scope.pageSize = 9;

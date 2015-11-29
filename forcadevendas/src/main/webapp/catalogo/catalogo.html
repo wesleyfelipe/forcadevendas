@@ -1,15 +1,26 @@
-<br />
+﻿<br />
 <section>
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-3">
 				<div class="left-sidebar">
+
+					<div class="center-block">
+						<button type="button" class="btn btn-default center-block"
+							data-toggle="collapse" ng-click="cleanFilter()">
+							<span class="fa fa-refresh"></span> Remover Filtro
+						</button>
+					</div>
+					<br/>
+
 					<h2>Departamentos</h2>
 					<div class="brands-name">
 						<ul class="nav nav-pills nav-stacked">
-							<li ng-repeat="departamento in departamentos"><a href="" ng-class="{'active' : departamento.nome == filter.departamento}"
+							<li ng-repeat="departamento in departamentos"><a href=""
+								ng-class="{'active' : departamento.nome == filter.departamento}"
 								ng-click="filterByDepartamento(departamento.nome)"> <span
-									class="pull-right">({{departamento.totalProdutos}})</span>{{departamento.nome}}</a></li>
+									class="pull-right">({{departamento.totalProdutos}})</span>{{departamento.nome}}
+							</a></li>
 						</ul>
 					</div>
 					<br />
@@ -17,7 +28,8 @@
 					<h2>Categorias</h2>
 					<div class="brands-name">
 						<ul class="nav nav-pills nav-stacked">
-							<li ng-repeat="categoria in categorias"><a href="" ng-class="{'active' : categoria.nome == filter.categoria}"
+							<li ng-repeat="categoria in categorias"><a href=""
+								ng-class="{'active' : categoria.nome == filter.categoria}"
 								ng-click="filterByCategoria(categoria.nome)"> <span
 									class="pull-right">({{categoria.totalProdutos}})</span>
 									{{categoria.nome}}
@@ -30,7 +42,8 @@
 						<h2>Marcas</h2>
 						<div class="brands-name">
 							<ul class="nav nav-pills nav-stacked">
-								<li ng-repeat="marca in marcas"><a href="" ng-class="{'active' : marca.nome == filter.marca}"
+								<li ng-repeat="marca in marcas"><a href=""
+									ng-class="{'active' : marca.nome == filter.marca}"
 									ng-click="filterByMarca(marca.nome)"> <span
 										class="pull-right">({{marca.totalProdutos}})</span>
 										{{marca.nome}}
@@ -44,7 +57,7 @@
 			<div class="col-sm-9 padding-right">
 				<div class="features_items">
 					<!--features_items-->
-					<h2 class="title text-center">Lista de Produtos</h2>
+					<h2 class="title text-center">Catálogo</h2>
 					<div class="row">
 						<div class="col-sm-4"
 							ng-repeat="produto in produtos | filter:filter |startFrom:currentPage | limitTo:pageSize">
