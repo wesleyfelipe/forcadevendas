@@ -2,12 +2,18 @@
 	var catalogoModule = angular.module('forcaDeVendas.catalogo', []);
 
 	catalogoModule.controller('CatalogoController', [ '$scope',
-			'ProdutoService', function($scope, ProdutoService) {
+			'ProdutoService', 'MarcaService', function($scope, ProdutoService, MarcaService) {
 				var updateList = function updateList() {
 					$scope.produtos = ProdutoService.query();
 				};
 
 				updateList();
+				
+				var updateMarcas = function updateMarcas(){
+					$scope.marcas = MarcaService.query();
+				}
+				
+				updateMarcas();
 
 				$scope.currentPage = 0;
 				$scope.pageSize = 9;
