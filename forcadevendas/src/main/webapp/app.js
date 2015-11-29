@@ -50,6 +50,13 @@
                 redirectTo: '/login'
             });
     }]);
+    
+    ForcaDeVendas.app.filter('startFrom', function() {
+        return function(input, start) {
+            start = +start; //parse to int
+            return input.slice(start);
+        }
+    });
 
     ForcaDeVendas.app.run(['$location', '$rootScope', '$cookieStore', '$http',
         function($location, $rootScope, $cookieStore, $http) {

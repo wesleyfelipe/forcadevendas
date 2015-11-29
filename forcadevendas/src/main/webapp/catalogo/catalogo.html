@@ -106,7 +106,8 @@
 				<div class="features_items">
 					<!--features_items-->
 					<h2 class="title text-center">Lista de Produtos</h2>
-					<div class="col-sm-4" ng-repeat="produto in produtos">
+					<div class="col-sm-4"
+						ng-repeat="produto in produtos | startFrom:currentPage | limitTo:pageSize">
 						<a href="#/">
 							<div class="product-image-wrapper">
 								<div class="single-products">
@@ -128,10 +129,10 @@
 					</div>
 
 					<ul class="pagination">
-						<li class="active"><a href="">1</a></li>
-						<li><a href="">2</a></li>
-						<li><a href="">3</a></li>
-						<li><a href="">&raquo;</a></li>
+						<li
+							ng-repeat="i in getNumber(numberOfPages(produtos)) track by $index"
+							ng-class="{'active': currentPage == $index}"><a href=""
+							ng-click="changePage($index)">{{$index+1}}</a></li>
 					</ul>
 				</div>
 				<!--features_items-->
