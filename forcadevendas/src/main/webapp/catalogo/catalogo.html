@@ -5,71 +5,13 @@
 			<div class="col-sm-3">
 				<div class="left-sidebar">
 					<h2>Categoria</h2>
-					<div class="panel-group category-products" id="accordian">
-						<!--category-productsr-->
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h4 class="panel-title">
-									<a data-toggle="collapse" data-parent="#accordian"
-										href="#botas"> <span class="badge pull-right"><i
-											class="fa fa-plus"></i></span> Bolsas
-									</a>
-								</h4>
-							</div>
-							<div id="botas" class="panel-collapse collapse">
-								<div class="panel-body">
-									<ul>
-										<li><a href="">Ankle boots</a></li>
-										<li><a href="">Open boot</a></li>
-										<li><a href="">Country</a></li>
-										<li><a href="">Montaria</a></li>
-										<li><a href="">Coturno</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h4 class="panel-title">
-									<a data-toggle="collapse" data-parent="#accordian"
-										href="#sapatos"> <span class="badge pull-right"><i
-											class="fa fa-plus"></i></span> Sapatos
-									</a>
-								</h4>
-							</div>
-							<div id="sapatos" class="panel-collapse collapse">
-								<div class="panel-body">
-									<ul>
-										<li><a href="">Peep Toe</a></li>
-										<li><a href="">Chanel</a></li>
-										<li><a href="">Scarpin</a></li>
-										<li><a href="">Oxford</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h4 class="panel-title">
-									<a data-toggle="collapse" data-parent="#accordian"
-										href="#sandalias"> <span class="badge pull-right"><i
-											class="fa fa-plus"></i></span> Sandálias
-									</a>
-								</h4>
-							</div>
-							<div id="sandalias" class="panel-collapse collapse">
-								<div class="panel-body">
-									<ul>
-										<li><a href="">Anabela</a></li>
-										<li><a href="">Gladiadora</a></li>
-										<li><a href="">Rasteiras</a></li>
-										<li><a href="">Salto</a></li>
-										<li><a href="">Tamanco</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
+					<div class="brands-name">
+						<ul class="nav nav-pills nav-stacked">
+							<li ng-repeat="categoria in categorias"><a href=""> <span
+									class="pull-right">({{categoria.totalProdutos}})</span>
+									{{categoria.nome}}
+							</a></li>
+						</ul>
 					</div>
 					<!--/category-productsr-->
 
@@ -78,8 +20,9 @@
 						<h2>Marcas</h2>
 						<div class="brands-name">
 							<ul class="nav nav-pills nav-stacked">
-								<li ng-repeat="marca in marcas"><a href=""> <span class="pull-right">({{marca.totalProdutos}})</span>
-								{{marca.nome}}
+								<li ng-repeat="marca in marcas"><a href=""> <span
+										class="pull-right">({{marca.totalProdutos}})</span>
+										{{marca.nome}}
 								</a></li>
 							</ul>
 						</div>
