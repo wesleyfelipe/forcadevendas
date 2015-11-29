@@ -38,6 +38,13 @@
         		templateUrl: 'clientes/cadastroClientes.html',
         		controller: 'CadastroController'
             })
+            .when('/catalogo', {
+        		templateUrl: 'catalogo/catalogo.html',
+        		controller: 'CatalogoController',
+        		data: {
+                    headerPage: 3
+                }
+            })
             .otherwise({
                 redirectTo: '/login'
             });
