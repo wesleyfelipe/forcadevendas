@@ -1,4 +1,4 @@
-﻿
+
 /*************************
 *******Typography******
 **************************/
@@ -247,7 +247,7 @@ a#scrollUp i{
 	padding-bottom: 10px;
 }
 
-.mainmenu ul li a:hover, .mainmenu ul li a.active,  .shop-menu ul li a.active{
+.mainmenu ul li a:hover, .mainmenu ul li a.active,  .shop-menu ul li a.active {
 	background:none;
 	color:#fdb45e;
 }
@@ -779,7 +779,12 @@ h2.title:before{
 
 .brands-name .nav-stacked li a:hover{
   background-color: #fff;
-  color: #696763;
+  color: #FE980F;
+}
+
+.brands-name .nav-stacked li a.active{
+  background-color: #fff;
+  color: #FE980F;
 }
 
 .shipping {
@@ -1556,7 +1561,7 @@ h2.title {
 }
 
 .breadcrumbs .breadcrumb > li + li:before {
-  content: " ";
+  content: "�";
 }
 
 #cart_items .cart_info {

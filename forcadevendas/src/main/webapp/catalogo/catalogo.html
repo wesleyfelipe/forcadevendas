@@ -7,10 +7,9 @@
 					<h2>Departamentos</h2>
 					<div class="brands-name">
 						<ul class="nav nav-pills nav-stacked">
-							<li ng-repeat="departamento in departamentos"><a href=""
+							<li ng-repeat="departamento in departamentos"><a href="" ng-class="{'active' : departamento.nome == filter.departamento}"
 								ng-click="filterByDepartamento(departamento.nome)"> <span
-									class="pull-right">({{departamento.totalProdutos}})</span> <strong>{{departamento.nome}}</strong>
-							</a></li>
+									class="pull-right">({{departamento.totalProdutos}})</span>{{departamento.nome}}</a></li>
 						</ul>
 					</div>
 					<br />
@@ -18,7 +17,7 @@
 					<h2>Categorias</h2>
 					<div class="brands-name">
 						<ul class="nav nav-pills nav-stacked">
-							<li ng-repeat="categoria in categorias"><a href=""
+							<li ng-repeat="categoria in categorias"><a href="" ng-class="{'active' : categoria.nome == filter.categoria}"
 								ng-click="filterByCategoria(categoria.nome)"> <span
 									class="pull-right">({{categoria.totalProdutos}})</span>
 									{{categoria.nome}}
@@ -31,7 +30,7 @@
 						<h2>Marcas</h2>
 						<div class="brands-name">
 							<ul class="nav nav-pills nav-stacked">
-								<li ng-repeat="marca in marcas"><a href=""
+								<li ng-repeat="marca in marcas"><a href="" ng-class="{'active' : marca.nome == filter.marca}"
 									ng-click="filterByMarca(marca.nome)"> <span
 										class="pull-right">({{marca.totalProdutos}})</span>
 										{{marca.nome}}
