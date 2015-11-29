@@ -1,7 +1,5 @@
 <header id="header">
-	<!--header-->
 	<div class="header_top">
-		<!--header_top-->
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-6 ">
@@ -28,10 +26,8 @@
 			</div>
 		</div>
 	</div>
-	<!--/header_top-->
 
 	<div class="header-middle">
-		<!--header-middle-->
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-4">
@@ -43,20 +39,18 @@
 					<div class="shop-menu pull-right">
 						<ul class="nav navbar-nav">
 							<li><a ng-class="{'active': isActive(1)}" href="#/"><i class="glyphicon glyphicon-home"></i>Home</a></li>
-							<li><a ng-class="{'active': isActive(3)}" href="#/catalogo"><i
+							<li ng-show="global.currentUser"><a ng-class="{'active': isActive(3)}" href="#/catalogo"><i
 									class="fa fa-th"></i>Catalogo</a></li>
-							<li><a href="#/carrinho"><i
+							<li ng-show="global.currentUser"><a href="#/carrinho"><i
 									class="fa fa-shopping-cart"></i>Carrinho</a></li>
-							<li><a href="#/pedidos"><i class="fa fa-usd"></i>Pedidos</a></li>
-							<li><a ng-class="{'active': isActive(2)}" href="#/clientes"><i class="fa fa-asterisk"></i>Clientes</a></li>
-							<li><a href="#/representante"><i class="fa fa-user"></i>Representante</a></li>
-							<li><a href="#/logout"><i class="glyphicon glyphicon-log-out"></i>Logout</a></li>
+							<li ng-show="global.currentUser"><a href="#/pedidos"><i class="fa fa-usd"></i>Pedidos</a></li>
+							<li ng-show="global.currentUser"><a ng-class="{'active': isActive(2)}" href="#/clientes"><i class="fa fa-asterisk"></i>Clientes</a></li>
+							<li ng-show="global.currentUser"><a href="#/representante"><i class="fa fa-user"></i>Representante</a></li>
+							<li ng-show="global.currentUser"><a href="#/logout"><i class="glyphicon glyphicon-log-out"></i>Logout</a></li>
 						</ul>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!--/header-middle-->
-
 </header>
