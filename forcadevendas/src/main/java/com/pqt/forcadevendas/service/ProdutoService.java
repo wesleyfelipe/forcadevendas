@@ -27,7 +27,8 @@ public class ProdutoService implements IProdutoService {
 		for (Produto produto : produtos) {
 			dtos.add(new ProdutoDadosBasicosDTO(produto.getId(), produto.getModelo().getNome(), produto.getPreco(),
 					produto.getPrecoPromocao(), produto.getImagemPrincipal(), produto.getCor(),
-					produto.getModelo().getMarca().getNome()));
+					produto.getModelo().getMarca().getNome(), produto.getModelo().getDepartamento().getNome(),
+					produto.getModelo().getCategoria().getNome()));
 		}
 		return dtos;
 	}
@@ -35,12 +36,12 @@ public class ProdutoService implements IProdutoService {
 	@Override
 	public ProdutoDTO getProduto(Integer id) {
 		Produto produto = dao.getProduto(id);
-		if(produto == null)
+		if (produto == null)
 			throw new NotFoundException("Produto com identificador " + id + " não existe.");
 		return buildProdutoDtoFromProduto(produto);
 	}
-	
-	private ProdutoDTO buildProdutoDtoFromProduto(Produto produto){
+
+	private ProdutoDTO buildProdutoDtoFromProduto(Produto produto) {
 		ProdutoDTO produtoDto = new ProdutoDTO();
 		produtoDto.setCategoria(produto.getModelo().getCategoria().getNome());
 		produtoDto.setColecao(produto.getModelo().getColecao().getNome());
@@ -55,7 +56,7 @@ public class ProdutoService implements IProdutoService {
 		produtoDto.setNomeModelo(produto.getModelo().getNome());
 		produtoDto.setPreco(produto.getPreco());
 		produtoDto.setPrecoPromocional(produto.getPrecoPromocao());
-		
+
 		return produtoDto;
 	}
 }

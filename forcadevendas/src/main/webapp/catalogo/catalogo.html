@@ -7,9 +7,9 @@
 					<h2>Departamentos</h2>
 					<div class="brands-name">
 						<ul class="nav nav-pills nav-stacked">
-							<li ng-repeat="departamento in departamentos"><a href="">
-									<span class="pull-right">({{departamento.totalProdutos}})</span>
-									<strong>{{departamento.nome}}</strong>
+							<li ng-repeat="departamento in departamentos"><a href=""
+								ng-click="filterByDepartamento(departamento.nome)"> <span
+									class="pull-right">({{departamento.totalProdutos}})</span> <strong>{{departamento.nome}}</strong>
 							</a></li>
 						</ul>
 					</div>
@@ -18,19 +18,21 @@
 					<h2>Categorias</h2>
 					<div class="brands-name">
 						<ul class="nav nav-pills nav-stacked">
-							<li ng-repeat="categoria in categorias"><a href=""> <span
+							<li ng-repeat="categoria in categorias"><a href=""
+								ng-click="filterByCategoria(categoria.nome)"> <span
 									class="pull-right">({{categoria.totalProdutos}})</span>
 									{{categoria.nome}}
 							</a></li>
 						</ul>
 					</div>
 					<br />
-					
+
 					<div class="brands_products">
 						<h2>Marcas</h2>
 						<div class="brands-name">
 							<ul class="nav nav-pills nav-stacked">
-								<li ng-repeat="marca in marcas"><a href=""> <span
+								<li ng-repeat="marca in marcas"><a href=""
+									ng-click="filterByMarca(marca.nome)"> <span
 										class="pull-right">({{marca.totalProdutos}})</span>
 										{{marca.nome}}
 								</a></li>
@@ -44,28 +46,29 @@
 				<div class="features_items">
 					<!--features_items-->
 					<h2 class="title text-center">Lista de Produtos</h2>
-					<div class="col-sm-4"
-						ng-repeat="produto in produtos | startFrom:currentPage | limitTo:pageSize">
-						<a href="#/">
-							<div class="product-image-wrapper">
-								<div class="single-products">
-									<div class="productinfo text-center">
-										<img src="{{produto.imagem}}" alt="" />
-										<h2>{{produto.precoPromocional}}</h2>
-										<p>{{produto.nomeModelo}}</p>
-									</div>
-									<div class="product-overlay">
-										<div class="overlay-content">
-											<p>De: R$ {{produto.preco}}</p>
-											<h2>Por: R$ {{produto.precoPromocional}}</h2>
+					<div class="row">
+						<div class="col-sm-4"
+							ng-repeat="produto in produtos | filter:filter |startFrom:currentPage | limitTo:pageSize">
+							<a href="#/">
+								<div class="product-image-wrapper">
+									<div class="single-products">
+										<div class="productinfo text-center">
+											<img src="{{produto.imagem}}" alt="" />
+											<h2>{{produto.precoPromocional}}</h2>
 											<p>{{produto.nomeModelo}}</p>
+										</div>
+										<div class="product-overlay">
+											<div class="overlay-content">
+												<p>De: R$ {{produto.preco}}</p>
+												<h2>Por: R$ {{produto.precoPromocional}}</h2>
+												<p>{{produto.nomeModelo}}</p>
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
-						</a>
+							</a>
+						</div>
 					</div>
-
 					<ul class="pagination">
 						<li
 							ng-repeat="i in getNumber(numberOfPages(produtos)) track by $index"

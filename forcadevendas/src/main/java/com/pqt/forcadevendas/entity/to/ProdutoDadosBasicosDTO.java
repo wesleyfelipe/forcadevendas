@@ -11,9 +11,11 @@ public class ProdutoDadosBasicosDTO {
 	private String imagem;
 	private String cor;
 	private String marca;
+	private String departamento;
+	private String categoria;
 	
 	public ProdutoDadosBasicosDTO(Integer id, String nomeModelo, BigDecimal preco, BigDecimal precoPromocional,
-			String imagem, String cor, String marca) {
+			String imagem, String cor, String marca, String departamento, String categoria) {
 		super();
 		this.id = id;
 		this.nomeModelo = nomeModelo;
@@ -22,6 +24,8 @@ public class ProdutoDadosBasicosDTO {
 		this.imagem = imagem;
 		this.cor = cor;
 		this.marca = marca;
+		this.departamento = departamento;
+		this.categoria = categoria;
 	}
 
 	public Integer getId() {
@@ -78,6 +82,22 @@ public class ProdutoDadosBasicosDTO {
 	
 	public void setMarca(String marca) {
 		this.marca = marca;
+	}
+	
+	public String getCategoria() {
+		return categoria;
+	}
+	
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
+	
+	public String getDepartamento() {
+		return departamento;
+	}
+	
+	public void setDepartamento(String departamento) {
+		this.departamento = departamento;
 	}
 	
 }
