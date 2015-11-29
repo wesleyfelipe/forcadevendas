@@ -2,7 +2,7 @@
 	var catalogoModule = angular.module('forcaDeVendas.catalogo', []);
 
 	catalogoModule.controller('CatalogoController', [ '$scope',
-			'ProdutoService', 'MarcaService', 'CategoriaService', function($scope, ProdutoService, MarcaService, CategoriaService) {
+			'ProdutoService', 'MarcaService', 'CategoriaService', 'DepartamentoService', function($scope, ProdutoService, MarcaService, CategoriaService, DepartamentoService) {
 				var updateList = function updateList() {
 					$scope.produtos = ProdutoService.query();
 				};
@@ -12,6 +12,11 @@
 					$scope.marcas = MarcaService.query();
 				}
 				updateMarcas();
+				
+				var updateDepartamentos = function updateDepartamentos(){
+					$scope.departamentos = DepartamentoService.query();
+				}
+				updateDepartamentos();
 				
 				var updateCategorias = function updateCategorias(){
 					$scope.categorias = CategoriaService.query();

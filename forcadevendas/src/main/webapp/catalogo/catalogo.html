@@ -4,7 +4,18 @@
 		<div class="row">
 			<div class="col-sm-3">
 				<div class="left-sidebar">
-					<h2>Categoria</h2>
+					<h2>Departamentos</h2>
+					<div class="brands-name">
+						<ul class="nav nav-pills nav-stacked">
+							<li ng-repeat="departamento in departamentos"><a href="">
+									<span class="pull-right">({{departamento.totalProdutos}})</span>
+									<strong>{{departamento.nome}}</strong>
+							</a></li>
+						</ul>
+					</div>
+					<br />
+
+					<h2>Categorias</h2>
 					<div class="brands-name">
 						<ul class="nav nav-pills nav-stacked">
 							<li ng-repeat="categoria in categorias"><a href=""> <span
@@ -13,10 +24,9 @@
 							</a></li>
 						</ul>
 					</div>
-					<!--/category-productsr-->
-
+					<br />
+					
 					<div class="brands_products">
-						<!--brands_products-->
 						<h2>Marcas</h2>
 						<div class="brands-name">
 							<ul class="nav nav-pills nav-stacked">
@@ -27,8 +37,6 @@
 							</ul>
 						</div>
 					</div>
-
-
 				</div>
 			</div>
 
