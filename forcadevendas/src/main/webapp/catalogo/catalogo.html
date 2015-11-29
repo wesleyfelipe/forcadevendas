@@ -71,7 +71,7 @@
 					</div>
 					<ul class="pagination">
 						<li
-							ng-repeat="i in getNumber(numberOfPages(produtos)) track by $index"
+							ng-repeat="i in getNumber(numberOfPages(doFilter(produtos, filter))) track by $index"
 							ng-class="{'active': currentPage == $index}"><a href=""
 							ng-click="changePage($index)">{{$index+1}}</a></li>
 					</ul>
