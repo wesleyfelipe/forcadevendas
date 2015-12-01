@@ -49,6 +49,7 @@
 										categoria : '',
 										departamento : ''
 									}
+									$scope.currentPage = 0;
 								}
 
 								$scope.filterByDepartamento = function(
@@ -58,6 +59,7 @@
 										categoria : '',
 										departamento : departamento
 									}
+									$scope.currentPage = 0;
 								}
 
 								$scope.filterByCategoria = function(categoria) {
@@ -66,6 +68,7 @@
 										marca : '',
 										categoria : categoria
 									}
+									$scope.currentPage = 0;
 								}
 
 								$scope.doFilter = function(produtos, filter) {
@@ -90,6 +93,7 @@
 										categoria : '',
 										departamento : ''
 									}
+									$scope.currentPage = 0;
 								}
 
 								// Paginação
