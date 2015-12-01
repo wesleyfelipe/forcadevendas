@@ -44,30 +44,17 @@
 								};
 
 								$scope.filterByMarca = function(marca) {
-									$scope.filter = {
-										marca : marca,
-										categoria : '',
-										departamento : ''
-									}
-									$scope.currentPage = 0;
+									$scope.filter.marca = marca;
 								}
 
 								$scope.filterByDepartamento = function(
 										departamento) {
-									$scope.filter = {
-										marca : '',
-										categoria : '',
-										departamento : departamento
-									}
+									$scope.filter.departamento =  departamento;
 									$scope.currentPage = 0;
 								}
 
 								$scope.filterByCategoria = function(categoria) {
-									$scope.filter = {
-										departamento : '',
-										marca : '',
-										categoria : categoria
-									}
+									$scope.filter.categoria = categoria;
 									$scope.currentPage = 0;
 								}
 
