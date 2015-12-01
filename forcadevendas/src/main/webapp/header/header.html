@@ -38,7 +38,7 @@
 				<div class="col-sm-8">
 					<div class="shop-menu pull-right">
 						<ul class="nav navbar-nav">
-							<li><a ng-class="{'active': isActive(1)}" href="#/"><i class="glyphicon glyphicon-home"></i>Home</a></li>
+							<li ng-show="global.currentUser"><a ng-class="{'active': isActive(1)}" href="#/"><i class="glyphicon glyphicon-home"></i>Home</a></li>
 							<li ng-show="global.currentUser"><a ng-class="{'active': isActive(3)}" href="#/catalogo"><i
 									class="fa fa-th"></i>Catalogo</a></li>
 							<li ng-show="global.currentUser"><a href="#/carrinho"><i
