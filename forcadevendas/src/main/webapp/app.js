@@ -7,7 +7,8 @@
             'forcaDeVendas.clientes',
             'forcaDeVendas.login',
             'forcaDeVendas.Home',
-            'forcaDeVendas.catalogo'
+            'forcaDeVendas.catalogo',
+            'forcaDeVendas.meusDados'
         ])
     };
 
@@ -46,6 +47,13 @@
                     headerPage: 3
                 }
             })
+            .when('/meus-dados', {
+        		templateUrl: 'meus-Dados/meus-dados.html',
+        		controller: 'MeusDadosController',
+        		data: {
+                    headerPage: 4
+                }
+            })
             .otherwise({
                 redirectTo: '/login'
             });
@@ -57,7 +65,7 @@
             return input.slice(start);
         }
     });
-
+    
     ForcaDeVendas.app.run(['$location', '$rootScope', '$cookieStore', '$http',
         function($location, $rootScope, $cookieStore, $http) {
             $rootScope.global = $cookieStore.get('global') || {};
