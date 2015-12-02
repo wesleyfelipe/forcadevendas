@@ -2529,3 +2529,8 @@ h2.title {
 	margin: 0 auto; width: 60%;
 }
 
+.pad6-sup-inf{
+	padding-bottom: 6px;
+	padding-top: 6px;
+}
+
