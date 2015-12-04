@@ -32,7 +32,7 @@
 					<label for="fone" class="col-sm-2 control-label">Fone</label>
 					<div class="col-sm-10">
 						<input id="fone" name="nome" type="text" class="form-control"
-							disabled="disabled" ng-model="representante.fone">
+							disabled="disabled" ng-model="getFoneFormatado(representante.fone)">
 					</div>
 				</div>
 
@@ -48,7 +48,7 @@
 					<label for="rg" class="col-sm-2 control-label">RG</label>
 					<div class="col-sm-10">
 						<input id="rg" name="nome" type="text" class="form-control"
-							disabled="disabled" ng-model="representante.rg">
+							disabled="disabled" ng-model="getRgFormatado(representante.rg)">
 					</div>
 				</div>
 

@@ -33,6 +33,10 @@
 
 					return 'Indefinido';
 				};
-
+				
+				$scope.getFoneFormatado = function getFoneFormatado(fone){
+					return fone.substring(0,4) + "-" + fone.substring(4,8);
+				}
+				
 			} ]);
 })(angular);
