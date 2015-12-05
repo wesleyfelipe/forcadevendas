@@ -13,7 +13,7 @@
 					}, function(response) {
 						$scope.produto = angular.fromJson(response);
 						$scope.produto.tamanho = 36;
-						$scope.quantidade = 1;
+						$scope.produto.quantidade = 1;
 					});
 				}
 				load();

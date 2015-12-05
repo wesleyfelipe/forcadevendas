@@ -45,7 +45,10 @@
 							<!--/product-information-->
 
 							<h2>{{produto.nomeModelo}}</h2>
-							<span> <span>R$ {{produto.precoPromocional}}</span> <label>Quantidade:</label>
+							<p><s>R$ {{produto.preco}}</s></p>
+							<span> 
+								<span>R$ {{produto.precoPromocional}}</span> 
+								<label>Quantidade:</label>
 								<input type="text" ng-model="produto.quantidade" onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
 								<button type="button" class="btn btn-fefault cart"
 									ng-click="addItemAoCarrinho(produto)">
