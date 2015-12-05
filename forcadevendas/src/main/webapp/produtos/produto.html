@@ -1,4 +1,4 @@
-<form>
+<form id="produto-form">
 <section>
 	<div class="container">
 		<div class="row">
@@ -49,10 +49,12 @@
 							<span> 
 								<span>R$ {{produto.precoPromocional}}</span> 
 								<label>Quantidade:</label>
-								<input type="text" ng-model="produto.quantidade" onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
-								<button type="button" class="btn btn-fefault cart"
+								<input type="text" ng-model="produto.quantidade" required
+									onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
+								<button type="submit" class="btn btn-fefault cart"
 									ng-click="addItemAoCarrinho(produto)">
-									<i class="fa fa-shopping-cart"></i> Adicionar ao carrinho
+									<i class="fa fa-shopping-cart"/>
+									</i> Adicionar ao carrinho
 								</button>
 							</span>
 							<p>

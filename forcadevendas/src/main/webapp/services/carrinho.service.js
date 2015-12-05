@@ -5,12 +5,13 @@
         var itens = [];
         return {
             list: function() {
-            	itens = JSON.parse($window.localStorage['carrinho'] || '{}');
+            	itens = JSON.parse($window.localStorage['carrinho'] || '[]');
                 return itens;
             },
         	add : function(item){
         		itens.push(item);
         		$window.localStorage['carrinho'] = JSON.stringify(itens);
+        		itens = JSON.parse($window.localStorage['carrinho'] || '[]');
         	}
         }
     }]);
