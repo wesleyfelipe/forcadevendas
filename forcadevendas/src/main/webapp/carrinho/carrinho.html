@@ -3,27 +3,38 @@
 	<div class="page-header">
 		<h2>Produtos adicionados</h2>
 	</div>
+	<div class="page-header">
+		<div class="row">
+			<h4 class="pull-right">Total Itens: {{calcularQtdeTotal()}}</h4>
+		</div>
+		<div class="row">
+			<h4 class="pull-right">Total Pedido: R$ {{calcularTotal()}}</h4>
+		</div>
+	</div>
+
 	<div class="list-group">
 		<a href="" class="list-group-item row"
-			ng-repeat="produto in produtos track by $index">
+			ng-repeat="item in itens track by $index">
 			<div class="row">
 				<div class="col-sm-2">
-					<img class="img-responsive img-thumbnail" src="{{produto.imagem}}"
+					<img class="img-responsive img-thumbnail" src="{{item.imagem}}"
 						alt="" />
 				</div>
 				<div class="col-sm-6">
-					<h5 class="list-item-heading">Id Produto: {{produto.id}}</h5>
-					<h4>{{produto.nomeModelo}}</h4>
-					<h5>Tamanho: {{produto.tamanho}} / Cor: {{produto.cor}}</h5>
+					<h5 class="list-item-heading">Id Produto: {{item.id}}</h5>
+					<h3>{{item.nomeModelo}}</h3>
+					<h5>Tamanho: {{item.tamanho}} / Cor: {{item.cor}}</h5>
 					<h5>
-						<s>Preço: R$ {{produto.preco}}</s>
+						<s>Preço: R$ {{item.preco}}</s>
 					</h5>
-					<h5>Preço promocional: R$ {{produto.precoPromocional}}</h5>
+					<h5>Preço promocional: R$ {{item.precoPromocional}}</h5>
 				</div>
 				<div class="col-sm-3">
 					<label>Quantidade:</label> <input type="text"
-						ng-model="produto.quantidade"
+						ng-model="item.quantidade" required
 						onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+					<h5>Subtotal: R$ {{calcularSubtotal(item.precoPromocional,
+						item.quantidade)}}</h5>
 				</div>
 
 			</div>
