@@ -4,9 +4,22 @@
 		<h2>Produtos adicionados</h2>
 	</div>
 	<div class="list-group">
-		<a href="" class="list-group-item" ng-repeat="produto in produtos track by $index">
-			<h4 class="list-item-heading">{{produto.id}} - {{produto.nomeModelo}} - Tamanho : {{produto.tamanho}} - Qtde: {{produto.quantidade}}
-			</h4>
+		<a href="" class="list-group-item row"
+			ng-repeat="produto in produtos track by $index">
+			<div class="row">
+				<div class="col-sm-2">
+					<img class="img-responsive img-thumbnail" src="{{produto.imagem}}"
+						alt="" />
+				</div>
+				<div class="col-sm-6">
+					<h5 class="list-item-heading">Id Produto: {{produto.id}}</h5>
+					<h4>{{produto.nomeModelo}} </h4>
+					<h5>Tamanho: {{produto.tamanho}} /  Cor: {{produto.cor}} </h5>
+					<h5><s>Preço: R$ {{produto.preco}}</s></h5>
+					<h5>Preço promocional: R$ {{produto.precoPromocional}}</h5>
+				</div>
+
+			</div>
 		</a>
 	</div>
 </div>
