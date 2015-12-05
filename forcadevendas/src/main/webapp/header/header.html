@@ -41,7 +41,7 @@
 							<li ng-show="global.currentUser"><a ng-class="{'active': isActive(1)}" href="#/"><i class="glyphicon glyphicon-home"></i>Home</a></li>
 							<li ng-show="global.currentUser"><a ng-class="{'active': isActive(3)}" href="#/catalogo"><i
 									class="fa fa-th"></i>Catalogo</a></li>
-							<li ng-show="global.currentUser"><a href="#/carrinho"><i
+							<li ng-show="global.currentUser"><a href="#/carrinho" ng-class="{'active': isActive(5)}"><i
 									class="fa fa-shopping-cart"></i>Carrinho</a></li>
 							<li ng-show="global.currentUser"><a href="#/pedidos"><i class="fa fa-usd"></i>Pedidos</a></li>
 							<li ng-show="global.currentUser"><a ng-class="{'active': isActive(2)}" href="#/clientes"><i class="fa fa-asterisk"></i>Clientes</a></li>

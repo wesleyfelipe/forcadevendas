@@ -3,7 +3,7 @@
 		app : angular.module('forcaDeVendas', [ 'ngRoute', 'ngCookies',
 				'ngResource', 'forcaDeVendas.clientes', 'forcaDeVendas.login',
 				'forcaDeVendas.Home', 'forcaDeVendas.catalogo',
-				'forcaDeVendas.meusDados', 'forcaDeVendas.produto' ])
+				'forcaDeVendas.meusDados', 'forcaDeVendas.produto', 'forcaDeVendas.carrinho' ])
 	};
 
 	ForcaDeVendas.app.config([ '$routeProvider', function($routeProvider) {
@@ -45,6 +45,13 @@
 			controller : 'MeusDadosController',
 			data : {
 				headerPage : 4
+			}
+		})
+		.when('/carrinho', {
+			templateUrl : 'carrinho/carrinho.html',
+			controller : 'CarrinhoController',
+			data : {
+				headerPage : 5
 			}
 		})
 		.when('/produto/:idProduto', {
