@@ -1,6 +1,6 @@
 var clientesModule = angular.module('forcaDeVendas.clientes');
-clientesModule.controller('CadastroController', ['$http','$scope', '$location', 'sucesso', 'GeoService',
-	function ($http, $scope, $location, sucesso, GeoService){
+clientesModule.controller('CadastroController', ['$http','$scope','$location','GeoService',
+	function ($http, $scope, $location, GeoService){
 		$scope.cliente = {
 			pais: undefined,
 			estado: undefined,
@@ -46,9 +46,10 @@ clientesModule.controller('CadastroController', ['$http','$scope', '$location', 
 			};
 			
 			$http.post('/rest/recursos/cliente', clientes).success(function (){
-				$scope.ui.sucesso = true;
-				$location.path('/clientes');
+				$scope.sucesso = true;
 
+				var alertPos = $('#cadastro-header').offset().top;
+				$(window).scrollTop(alertPos);
 			});};
 	}
 ]);
