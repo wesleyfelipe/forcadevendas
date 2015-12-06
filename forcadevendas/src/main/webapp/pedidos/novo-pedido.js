@@ -15,6 +15,7 @@
 				$scope.precoTotalPedido;
 				$scope.clientePedido;
 				$scope.clienteSelecionado;
+				$scope.enderecoEntrega;
 
 				var init = function() {
 					$http.get('/rest/recursos/representante/meus-dados')

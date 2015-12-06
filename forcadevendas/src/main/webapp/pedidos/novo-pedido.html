@@ -41,7 +41,7 @@
 			<div class="form-group col-md-6">
 				<label for="busca-cliente">Selecionar Cliente</label>
 				<select
-					ng-options="(cliente.nome) for cliente in listaClientes"
+					ng-options="(cliente.cnpj + ' | ' +cliente.nome) for cliente in listaClientes"
 					ng-change="findCliente(clienteSelecionado.id)"
 					ng-model="clienteSelecionado" id="busca-cliente"
 					name="busca-cliente" class="form-control" required>
@@ -101,47 +101,56 @@
 					ng-model="clientePedido.enderecoComercial.estado">
 			</div>
 			<div class="form-group col-md-4">
-				<label for="pais-endereco-comercial-cliente">Pais:</label> <input
+				<label for="pais-endereco-comercial-cliente">País:</label> <input
 					name="pais-endereco-comercial-cliente"
 					id="pais-endereco-comercial-cliente" type="text"
 					class="form-control" disabled="disabled"
 					ng-model="clientePedido.enderecoComercial.pais">
 			</div>
 		</div>
-		<!-- <div class="page-header">
+		<div class="page-header">
 			<h4>Endereço de Entrega</h4>
 		</div>
 		<div class="row">
 			<div class="form-group col-md-6">
-				<label for="busca-cliente">Selecionar Cliente</label>
+				<label for="busca-cliente">Selecionar Endereço</label>
 				<select
-					ng-options="(cliente.nome) for cliente in listaClientes"
-					ng-change="findCliente(clienteSelecionado.id)"
-					ng-model="clienteSelecionado" id="busca-cliente"
-					name="busca-cliente" class="form-control" required>
-					<option value="" ng-selected="selected">Selecione um cliente</option> 
+					ng-options="(endereco.logradouro + ' | ' + endereco.cidade) for endereco in clientePedido.enderecosEntrega"
+					ng-model="enderecoEntrega" id="busca-endereco"
+					name="busca-endereco" class="form-control" required>
+					<option value="" ng-selected="selected">Selecione um endereço</option> 
 				</select>
 			</div>
 		</div>
 		<div class="row">
-			<div class="form-group col-md-4">
-				<label for="preco-pedido">Preço Total:</label> <input
-					name="preco-pedido" id="preco-pedido" type="text"
+			<div class="form-group col-md-12">
+				<label for="logradouro-entrega">Logradouro:</label> <input
+					name="logradouro-entrega" id="logradouro-entrega" type="text"
 					class="form-control" disabled="disabled"
-					ng-model="precoTotalPedido">
+					ng-model="enderecoEntrega.logradouro">
 			</div>
-			<div class="form-group col-md-4">
-				<label for="qtde-pedido">Quantidade de Itens:</label> <input
-					name="qtde-pedido" id="qtde-pedido" type="text"
+			<div class="form-group col-md-6">
+				<label for="cidade-entrega">Cidade:</label> <input
+					name="cidade-entrega" id="cidade-entrega" type="text"
 					class="form-control" disabled="disabled"
-					ng-model="totalItensPedido">
+					ng-model="enderecoEntrega.cidade">
 			</div>
-			<div class="form-group col-md-4">
-				<label for="data-pedido">Data de Emissão:</label> <input
-					name="data-pedido" id="data-pedido" type="date"
-					class="form-control" disabled="disabled" ng-model="dataPedido">
+			<div class="form-group col-md-6">
+				<label for="cep-entrega">CEP:</label> <input
+					name="cep-entrega" id="cep-entrega" type="text"
+					class="form-control" disabled="disabled" ng-model="enderecoEntrega.cep">
 			</div>
-		</div> -->
+			<div class="form-group col-md-6">
+				<label for="estado-entrega">Estado:</label> <input
+					name="estado-entrega" id="estado-entrega" type="text"
+					class="form-control" disabled="disabled" ng-model="enderecoEntrega.estado">
+			</div>
+			<div class="form-group col-md-6">
+				<label for="pais-entrega">País:</label> <input
+					name="pais-entrega" id="pais-entrega" type="text"
+					class="form-control" disabled="disabled" ng-model="enderecoEntrega.pais">
+			</div>
+		</div>
 		<div class="page-header">
 			<h4>Resumo do Pedido</h4>
 		</div>
