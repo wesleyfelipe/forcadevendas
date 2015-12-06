@@ -1,7 +1,5 @@
 package com.pqt.forcadevendas.service;
 
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +9,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.pqt.forcadevendas.dao.IRepresentanteDAO;
-import com.pqt.forcadevendas.entity.Pedido;
 import com.pqt.forcadevendas.entity.Representante;
 import com.pqt.forcadevendas.entity.to.PedidoKpiMesDTO;
 import com.pqt.forcadevendas.entity.to.RepresentanteDTO;

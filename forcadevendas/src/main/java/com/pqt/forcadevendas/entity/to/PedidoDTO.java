@@ -18,13 +18,14 @@ public class PedidoDTO {
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy HH:mm")
 	private Date dataCriacao;
 	private BigDecimal totalPedido;
+	private EnderecoDTO enderecoEntrega;
 	private List<ItemPedidoDTO> itensPedido = new ArrayList<ItemPedidoDTO>();
 	
 	public PedidoDTO(){
 	}
 	
 	public PedidoDTO(Integer id, String nomeCliente, String nomeRepresentante, Date dataCriacao,
-			BigDecimal totalPedido, Integer idCliente) {
+			BigDecimal totalPedido, Integer idCliente, EnderecoDTO enderecoEntrega) {
 		super();
 		this.id = id;
 		this.nomeCliente = nomeCliente;
@@ -32,6 +33,7 @@ public class PedidoDTO {
 		this.dataCriacao = dataCriacao;
 		this.totalPedido = totalPedido;
 		this.idCliente = idCliente;
+		this.enderecoEntrega = enderecoEntrega;
 	}
 
 	public Integer getId() {
@@ -88,5 +90,13 @@ public class PedidoDTO {
 	
 	public void setIdCliente(Integer idCliente) {
 		this.idCliente = idCliente;
+	}
+	
+	public EnderecoDTO getEnderecoEntrega() {
+		return enderecoEntrega;
+	}
+	
+	public void setEnderecoEntrega(EnderecoDTO enderecoEntrega) {
+		this.enderecoEntrega = enderecoEntrega;
 	}
 }

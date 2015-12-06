@@ -15,9 +15,11 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import com.pqt.forcadevendas.dao.IClienteDAO;
+import com.pqt.forcadevendas.dao.IEnderecoEntregaDAO;
 import com.pqt.forcadevendas.dao.IPedidoDAO;
 import com.pqt.forcadevendas.dao.IProdutoDAO;
 import com.pqt.forcadevendas.entity.Cliente;
+import com.pqt.forcadevendas.entity.EnderecoEntrega;
 import com.pqt.forcadevendas.entity.ItemPedido;
 import com.pqt.forcadevendas.entity.Pedido;
 import com.pqt.forcadevendas.entity.Produto;
@@ -37,6 +39,9 @@ public class PedidoService implements IPedidoService {
 
 	@Autowired
 	private IProdutoDAO produtoDao;
+	
+	@Autowired
+	private IEnderecoEntregaDAO enderecoEntregaDao;
 
 	@Override
 	public List<PedidoDadosBasicosDTO> listPedidos() {
@@ -111,6 +116,7 @@ public class PedidoService implements IPedidoService {
 		pedido.setDataPedido(new Date());
 		pedido.setRepresentante((Representante) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
 		pedido.setCliente(findClienteForPedido(dto.getIdCliente()));
+		pedido.setEnderecoEntrega(findEnderecoForPedido(dto.getEnderecoEntrega().getId()));
 
 		if(dto.getItensPedido().isEmpty()){
 			throw new ValidationException("É necessário incluir ao menos um item para realizar um pedido.");
@@ -142,6 +148,19 @@ public class PedidoService implements IPedidoService {
 			} else {
 				throw new UnrecoverableKeyException(
 						"Cliente com id " + idCliente + " não existe. Não foi possível criar pedido.");
+			}
+		}
+		throw new UnrecoverableKeyException("Cliente não informado. Não foi possível criar pedido.");
+	}
+	
+	private EnderecoEntrega findEnderecoForPedido(Integer idEndereco) throws Exception {
+		if (idEndereco != null) {
+			EnderecoEntrega enderecoEntrega = enderecoEntregaDao.getEnderecoEntrega(idEndereco);
+			if (enderecoEntrega != null) {
+				return enderecoEntrega;
+			} else {
+				throw new UnrecoverableKeyException(
+						"Endereco com id " + idEndereco + " não existe. Não foi possível criar pedido.");
 			}
 		}
 		throw new UnrecoverableKeyException("Cliente não informado. Não foi possível criar pedido.");

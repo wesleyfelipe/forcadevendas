@@ -4,10 +4,11 @@
 	pedidosModule.controller('NovoPedidoController', [
 			'$scope',
 			'$http',
+			'$window',
 			'PedidoService',
 			'CarrinhoService',
 			'ClienteService',
-			function($scope, $http, PedidoService, CarrinhoService, ClienteService) {
+			function($scope, $http, $window, PedidoService, CarrinhoService, ClienteService) {
 
 				$scope.representante;
 				$scope.listaClientes;
@@ -23,7 +24,7 @@
 								$scope.representante = representante;
 							});
 					$scope.totalItensPedido = CarrinhoService.totalItens();
-					$scope.precoTotalPedido = "R$ " + CarrinhoService.precoTotal();
+					$scope.precoTotalPedido = CarrinhoService.precoTotal();
 					$scope.dataPedido = new Date();
 					$scope.listaClientes = ClienteService.query();
 				}
@@ -38,7 +39,27 @@
 				}
 				
 				$scope.realizarPedido = function(){
-					console.log("teste");
+					var pedido = {};
+					pedido.idCliente = $scope.clientePedido.id;
+					pedido.enderecoEntrega = {};
+					pedido.enderecoEntrega.id = $scope.enderecoEntrega.id;
+					pedido.itensPedido = [];
+					CarrinhoService.list().forEach(function(item){
+						pedido.itensPedido.push(parseItemPedido(item));
+					});
+					PedidoService.save(pedido, function(response) {
+						CarrinhoService.clean();
+					    $window.location.href = "#/catalogo";
+					  });
+				}
+				
+				var parseItemPedido = function(item){
+					var itemPedido = {};
+					itemPedido.idProduto = item.id;
+					itemPedido.preco = item.precoPromocional;
+					itemPedido.tamanho = item.tamanho;
+					itemPedido.quantidade = item.quantidade;
+					return itemPedido;
 				}
 				
 			} ]);

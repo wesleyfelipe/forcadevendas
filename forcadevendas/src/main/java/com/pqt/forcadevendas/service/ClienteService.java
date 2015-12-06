@@ -129,7 +129,7 @@ public class ClienteService implements IClienteService {
 
 	private EnderecoDTO buildEnderecoDtoFromEndereco(Endereco endereco) {
 		return endereco == null ? null
-				: new EnderecoDTO(endereco.getCep(), endereco.getLogradouro(), endereco.getCidade().getNome(),
+				: new EnderecoDTO(endereco.getId(), endereco.getCep(), endereco.getLogradouro(), endereco.getCidade().getNome(),
 						endereco.getCidade().getEstado().getNome(),
 						endereco.getCidade().getEstado().getPais().getNome());
 	}

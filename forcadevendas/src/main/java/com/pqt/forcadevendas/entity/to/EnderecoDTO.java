@@ -1,7 +1,8 @@
 package com.pqt.forcadevendas.entity.to;
 
 public class EnderecoDTO {
-
+	
+	private Integer id;
 	private String cep;
 	private String logradouro;
 	private String cidade;
@@ -10,13 +11,14 @@ public class EnderecoDTO {
 	
 	public EnderecoDTO(){}
 	
-	public EnderecoDTO(String cep, String logradouro, String cidade, String estado, String pais) {
+	public EnderecoDTO(Integer id, String cep, String logradouro, String cidade, String estado, String pais) {
 		super();
 		this.cep = cep;
 		this.logradouro = logradouro;
 		this.cidade = cidade;
 		this.estado = estado;
 		this.pais = pais;
+		this.id = id;
 	}
 
 	public String getCep() {
@@ -57,6 +59,14 @@ public class EnderecoDTO {
 	
 	public void setPais(String pais) {
 		this.pais = pais;
+	}
+	
+	public Integer getId() {
+		return id;
+	}
+	
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	
 }

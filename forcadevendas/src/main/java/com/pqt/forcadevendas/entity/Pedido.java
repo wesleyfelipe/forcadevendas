@@ -48,6 +48,10 @@ public class Pedido implements Serializable {
 	// bi-directional many-to-one association to ItemPedido
 	@OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<ItemPedido> itemPedidos = new ArrayList<ItemPedido>();
+	
+	@ManyToOne
+	@JoinColumn(name="id_endereco_entrega")
+	private EnderecoEntrega enderecoEntrega;
 
 	public Pedido() {
 	}
@@ -104,6 +108,14 @@ public class Pedido implements Serializable {
 		itemPedido.setPedido(null);
 
 		return itemPedido;
+	}
+	
+	public EnderecoEntrega getEnderecoEntrega() {
+		return enderecoEntrega;
+	}
+	
+	public void setEnderecoEntrega(EnderecoEntrega enderecoEntrega) {
+		this.enderecoEntrega = enderecoEntrega;
 	}
 
 }
