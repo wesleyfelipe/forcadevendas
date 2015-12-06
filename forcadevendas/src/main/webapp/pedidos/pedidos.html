@@ -7,18 +7,21 @@
 		<div class="list-group-item" ng-show="!pedidos.length">
 			<h4>Não há pedidos cadastrados.</h4>
 		</div>
-		<div ng-repeat="pedido in pedidos">
-			<a href="#/pedido/{{pedido.id}}" class="list-group-item">
-				<h4 class="list-item-heading">
-					{{pedido.id}} - {{pedido.nomeCliente}} <span> <span
-						class="pull-right" ng-bind="formatPrice(pedido.totalPedido)"></span>
-					</span>
-				</h4>
-				<p class="list-group-item-text">
-					<small>{{pedido.dataCriacao}}</small>
-				<p>{{pedido.nomeRepresentante}}</p>
-				</p>
-			</a>
+		<div ng-repeat="pedido in pedidos" class="list-group-item">
+			<h4 class="list-item-heading">
+				{{pedido.id}} - {{pedido.nomeCliente}} <span> <span
+					class="pull-right" ng-bind="formatPrice(pedido.totalPedido)">
+				</span> <br />
+					<button type="button" class="btn main-btn pull-right"
+						ng-click="visualizarPedido(pedido.id)">
+						<i class="fa fa-times" /> </i> Visualizar
+					</button>
+				</span>
+
+			</h4>
+			<p class="list-group-item-text">
+				<small>{{pedido.dataCriacao}}</small>
+			<p>{{pedido.nomeRepresentante}}</p>
 		</div>
 	</div>
 </div>
