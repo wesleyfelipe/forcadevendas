@@ -3,15 +3,38 @@
 
     app.factory('CarrinhoService',['$window', function($window) {
         var itens = [];
+        var localStorage = 'carrinho';
         return {
             list: function() {
-            	itens = JSON.parse($window.localStorage['carrinho'] || '[]');
+            	itens = JSON.parse($window.localStorage[localStorage] || '[]');
                 return itens;
             },
         	add : function(item){
-        		itens.push(item);
-        		$window.localStorage['carrinho'] = JSON.stringify(itens);
-        		itens = JSON.parse($window.localStorage['carrinho'] || '[]');
+        		var existingItemIndex = -1;
+        		itens.some(function(it, index){
+        			if(it.id === item.id && it.tamanho === item.tamanho){
+        				existingItemIndex = index;
+        				return true;
+        			}
+        			return false;
+        		});
+        		
+        		if(existingItemIndex !== -1){
+        			itens[existingItemIndex].quantidade += item.quantidade;
+        		} else {
+        			itens.push(item);
+        		}
+        		
+        		$window.localStorage[localStorage] = JSON.stringify(itens);
+        		itens = JSON.parse($window.localStorage[localStorage] || '[]');
+        	},
+        	remove : function(item){
+        		var index = itens.indexOf(item);
+        		if (index > -1) {
+        		    itens.splice(index, 1);
+        		}
+        		$window.localStorage[localStorage] = JSON.stringify(itens);
+        		itens = JSON.parse($window.localStorage[localStorage] || '[]');
         	}
         }
     }]);
