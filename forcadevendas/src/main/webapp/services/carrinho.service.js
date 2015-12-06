@@ -45,6 +45,25 @@
         	clean : function(){
         		$window.localStorage.removeItem(localStorage);
         		itens = [];
+        	},
+        	
+        	totalItens : function(){
+        		itens = JSON.parse($window.localStorage[localStorage] || '[]');
+        		var total = 0;
+				itens.forEach(function(item) {
+					total += parseInt(item.quantidade);
+				});
+				return total;
+        	},
+        	
+        	precoTotal : function(){
+        		itens = JSON.parse($window.localStorage[localStorage] || '[]');
+        		var total = 0;
+				itens.forEach(function(item) {
+					var subtotal = (item.precoPromocional * item.quantidade).toFixed(2);
+					total += parseFloat(subtotal);
+				});
+				return total.toFixed(2);
         	}
         }
     }]);

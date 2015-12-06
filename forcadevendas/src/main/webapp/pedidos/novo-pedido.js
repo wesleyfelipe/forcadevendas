@@ -1,20 +1,27 @@
 (function(angular) {
-    var pedidosModule = angular.module('forcaDeVendas.pedidos', []);
+	var pedidosModule = angular.module('forcaDeVendas.pedidos', []);
 
-    pedidosModule.controller('NovoPedidoController', ['$scope', 'PedidoService',
-        function($scope, PedidoService) {
+	pedidosModule.controller('NovoPedidoController', [
+			'$scope',
+			'$http',
+			'PedidoService',
+			'CarrinhoService',
+			function($scope, $http, PedidoService, CarrinhoService) {
 
-            $scope.formatPrice = function(price) {
-                var formattedPrice;
+				$scope.representante;
+				$scope.totalItensPedido;
+				$scope.precoTotalPedido;
 
-                if (price.toLocaleString) {
-                    formattedPrice = price.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
-                } else {
-                    formattedPrice = 'R$' + price;
-                }
-
-                return formattedPrice;
-            };
-        }
-    ]);
+				var init = function() {
+					$http.get('/rest/recursos/representante/meus-dados')
+							.success(function(representante) {
+								$scope.representante = representante;
+							});
+					$scope.totalItensPedido = CarrinhoService.totalItens();
+					$scope.precoTotalPedido = "R$ " + CarrinhoService.precoTotal();
+					$scope.dataPedido = new Date();
+				}
+				init();
+				
+			} ]);
 })(angular);

@@ -2461,3 +2461,27 @@ h2.title {
 	margin-top: 20px;
 	margin-left: 20px;
 }
+
+.secundary-btn {
+	background: #adadad;
+	border: 0 none;
+	border-radius: 0;
+	color: #FFFFFF;
+	font-family: 'Roboto', sans-serif;
+	font-size: 15px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	margin-left: 15px;
+}
+
+.main-btn {
+	background: #FE980F;
+	border: 0 none;
+	border-radius: 0;
+	color: #FFFFFF;
+	font-family: 'Roboto', sans-serif;
+	font-size: 15px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	margin-left: 15px;
+}
