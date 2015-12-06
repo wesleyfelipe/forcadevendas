@@ -47,7 +47,7 @@
 			data : {
 				headerPage : 5
 			}
-		}).when('/produto/:idProduto', {
+		}).when('/produtos/:idProduto', {
 			templateUrl : function(param) {
 				if (!param) {
 					return 'home/home.html';
@@ -67,6 +67,12 @@
 		}).when('/novo-pedido', {
 			templateUrl : 'pedidos/novo-pedido.html',
 			controller : 'NovoPedidoController',
+			data : {
+				headerPage : 6
+			}
+		}).when('/pedido/:idPedido', {
+			templateUrl : 'pedidos/view-pedido.html',
+			controller : 'PedidoViewController',
 			data : {
 				headerPage : 6
 			}

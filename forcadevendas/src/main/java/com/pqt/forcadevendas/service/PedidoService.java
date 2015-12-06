@@ -24,6 +24,7 @@ import com.pqt.forcadevendas.entity.ItemPedido;
 import com.pqt.forcadevendas.entity.Pedido;
 import com.pqt.forcadevendas.entity.Produto;
 import com.pqt.forcadevendas.entity.Representante;
+import com.pqt.forcadevendas.entity.to.EnderecoDTO;
 import com.pqt.forcadevendas.entity.to.ItemPedidoDTO;
 import com.pqt.forcadevendas.entity.to.PedidoDTO;
 import com.pqt.forcadevendas.entity.to.PedidoDadosBasicosDTO;
@@ -98,6 +99,7 @@ public class PedidoService implements IPedidoService {
 		dto.setNomeCliente(pedido.getCliente().getNome());
 		dto.setNomeRepresentante(pedido.getRepresentante().getNome());
 		dto.setTotalPedido(getTotalPedido(pedido));
+		dto.setEnderecoEntrega(buildEnderecoDTOFromEnderecoEntrega(pedido.getEnderecoEntrega()));
 
 		for (ItemPedido item : pedido.getItemPedidos()) {
 			dto.getItensPedido()
@@ -106,6 +108,17 @@ public class PedidoService implements IPedidoService {
 							item.getQuantidade(), item.getTamanho()));
 		}
 
+		return dto;
+	}
+	
+	private EnderecoDTO buildEnderecoDTOFromEnderecoEntrega(EnderecoEntrega endereco){
+		EnderecoDTO dto = new EnderecoDTO();
+		dto.setCep(endereco.getEndereco().getCep());
+		dto.setCidade(endereco.getEndereco().getCidade().getNome());
+		dto.setEstado(endereco.getEndereco().getCidade().getEstado().getNome());
+		dto.setId(endereco.getId());
+		dto.setLogradouro(endereco.getEndereco().getLogradouro());
+		dto.setPais(endereco.getEndereco().getCidade().getEstado().getPais().getNome());
 		return dto;
 	}
 

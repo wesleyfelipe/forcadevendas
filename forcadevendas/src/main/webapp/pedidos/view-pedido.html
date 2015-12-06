@@ -1,53 +1,12 @@
 <div class="container">
 	<div class="page-header">
-		<h2>Novo Pedido</h2>
+		<h2>Id Pedido: {{pedido.id}}</h2>
 	</div>
 
-	<form id="novo-pedido-form" ng-submit="realizarPedido()">
+	<form id="view-pedido-form"">
 
 		<div class="page-header">
-			<h4>Dados do Representante</h4>
-		</div>
-		<div class="row">
-			<div class="form-group col-md-6">
-				<label for="nome-representante">Nome:</label> <input
-					name="nome-representante" id="nome-representante" type="text"
-					class="form-control" disabled="disabled"
-					ng-model="representante.nome">
-			</div>
-			<div class="form-group col-md-6">
-				<label for="email-representante">Email:</label> <input
-					name="email-representante" id="email-representante" type="text"
-					class="form-control" disabled="disabled"
-					ng-model="representante.email">
-			</div>
-			<div class="form-group col-md-6">
-				<label for="cpf-representante">CPF:</label> <input
-					name="cpf-representante" id="cpf-representante" type="text"
-					class="form-control" disabled="disabled"
-					ng-model="representante.cpf">
-			</div>
-			<div class="form-group col-md-6">
-				<label for="rg-representante">RG:</label> <input
-					name="rg-representante" id="rg-representante" type="text"
-					class="form-control" disabled="disabled"
-					ng-model="representante.rg">
-			</div>
-		</div>
-		<div class="page-header">
 			<h4>Dados do Cliente</h4>
-		</div>
-		<div class="row">
-			<div class="form-group col-md-6">
-				<label for="busca-cliente">Selecionar Cliente</label>
-				<select
-					ng-options="(cliente.cnpj + ' | ' +cliente.nome) for cliente in listaClientes"
-					ng-change="findCliente(clienteSelecionado.id)"
-					ng-model="clienteSelecionado" id="busca-cliente"
-					name="busca-cliente" class="form-control" required>
-					<option value="" ng-selected="selected">Selecione um cliente</option> 
-				</select>
-			</div>
 		</div>
 		<div class="row">
 			<div class="form-group col-md-6">
@@ -112,43 +71,32 @@
 			<h4>Endereço de Entrega</h4>
 		</div>
 		<div class="row">
-			<div class="form-group col-md-6">
-				<label for="busca-cliente">Selecionar Endereço</label>
-				<select
-					ng-options="(endereco.logradouro + ' | ' + endereco.cidade) for endereco in clientePedido.enderecosEntrega"
-					ng-model="enderecoEntrega" id="busca-endereco"
-					name="busca-endereco" class="form-control" required>
-					<option value="" ng-selected="selected">Selecione um endereço</option> 
-				</select>
-			</div>
-		</div>
-		<div class="row">
 			<div class="form-group col-md-12">
 				<label for="logradouro-entrega">Logradouro:</label> <input
 					name="logradouro-entrega" id="logradouro-entrega" type="text"
 					class="form-control" disabled="disabled"
-					ng-model="enderecoEntrega.logradouro">
+					ng-model="pedido.enderecoEntrega.logradouro">
 			</div>
 			<div class="form-group col-md-6">
 				<label for="cidade-entrega">Cidade:</label> <input
 					name="cidade-entrega" id="cidade-entrega" type="text"
 					class="form-control" disabled="disabled"
-					ng-model="enderecoEntrega.cidade">
+					ng-model="pedido.enderecoEntrega.cidade">
 			</div>
 			<div class="form-group col-md-6">
 				<label for="cep-entrega">CEP:</label> <input
 					name="cep-entrega" id="cep-entrega" type="text"
-					class="form-control" disabled="disabled" ng-model="enderecoEntrega.cep">
+					class="form-control" disabled="disabled" ng-model="pedido.enderecoEntrega.cep">
 			</div>
 			<div class="form-group col-md-6">
 				<label for="estado-entrega">Estado:</label> <input
 					name="estado-entrega" id="estado-entrega" type="text"
-					class="form-control" disabled="disabled" ng-model="enderecoEntrega.estado">
+					class="form-control" disabled="disabled" ng-model="pedido.enderecoEntrega.estado">
 			</div>
 			<div class="form-group col-md-6">
 				<label for="pais-entrega">País:</label> <input
 					name="pais-entrega" id="pais-entrega" type="text"
-					class="form-control" disabled="disabled" ng-model="enderecoEntrega.pais">
+					class="form-control" disabled="disabled" ng-model="pedido.enderecoEntrega.pais">
 			</div>
 		</div>
 		<div class="page-header">
@@ -159,25 +107,24 @@
 				<label for="preco-pedido">Preço Total:</label> <input
 					name="preco-pedido" id="preco-pedido" type="text"
 					class="form-control" disabled="disabled"
-					value="R$ {{precoTotalPedido}}">
+					value="R$ {{pedido.totalPedido}}">
 			</div>
 			<div class="form-group col-md-4">
 				<label for="qtde-pedido">Quantidade de Itens:</label> <input
 					name="qtde-pedido" id="qtde-pedido" type="text"
 					class="form-control" disabled="disabled"
-					ng-model="totalItensPedido">
+					ng-model="pedido.itensPedido.length">
 			</div>
 			<div class="form-group col-md-4">
 				<label for="data-pedido">Data de Emissão:</label> <input
-					name="data-pedido" id="data-pedido" type="date"
-					class="form-control" disabled="disabled" ng-model="dataPedido">
+					name="data-pedido" id="data-pedido" type="text"
+					class="form-control" disabled="disabled" value="{{pedido.dataCriacao}}">
 			</div>
 		</div>
 
 		<div class="form-group">
 			<div class="pull-right">
-				<button type="submit" class="btn main-btn">Realizar Pedido</button>
-				<a class="btn secundary-btn" href="#/carrinho">Cancelar</a>
+				<a class="btn main-btn" href="#/pedidos">Voltar</a>
 			</div>
 		</div>
 	</form>

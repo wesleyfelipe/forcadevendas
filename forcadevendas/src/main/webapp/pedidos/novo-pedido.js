@@ -1,5 +1,5 @@
 (function(angular) {
-	var pedidosModule = angular.module('forcaDeVendas.pedidos', []);
+	var pedidosModule = angular.module('forcaDeVendas.pedidos');
 
 	pedidosModule.controller('NovoPedidoController', [
 			'$scope',

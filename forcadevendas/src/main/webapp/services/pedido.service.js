@@ -3,6 +3,6 @@
 
     app.factory('PedidoService', ['$resource',
         function($resource) {
-            return $resource('/rest/recursos/pedido');
+            return $resource('/rest/recursos/pedido/:id');
         }]);
 })(angular);
