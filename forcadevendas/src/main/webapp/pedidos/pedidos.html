@@ -1,10 +1,23 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
+<div class="container">
+    <div class="page-header">
+        <h2>Pedidos</h2>
+    </div>
 
-</body>
-</html>
+    <div class="list-group">
+        <div class="list-group-item" ng-show="!pedidos.length">
+            <h4>Não há pedidos cadastrados.</h4>
+        </div>
+        <a href="#" class="list-group-item" ng-repeat="pedido in pedidos">
+            <h4 class="list-item-heading">
+                {{pedido.id}} - {{pedido.nomeCliente}}
+                <span>
+                    <span class="pull-right" ng-bind="formatPrice(pedido.totalPedido)"></span>
+                </span>
+            </h4>
+            <p class="list-group-item-text">
+                <small>{{pedido.dataCriacao}}</small>
+                <p>{{pedido.nomeRepresentante}}</p>
+            </p>
+        </a>
+    </div>
+</div>

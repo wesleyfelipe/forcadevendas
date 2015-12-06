@@ -43,7 +43,7 @@
 									class="fa fa-th"></i>Catalogo</a></li>
 							<li ng-show="global.currentUser"><a href="#/carrinho" ng-class="{'active': isActive(5)}"><i
 									class="fa fa-shopping-cart"></i>Carrinho</a></li>
-							<li ng-show="global.currentUser"><a href="#/pedidos"><i class="fa fa-usd"></i>Pedidos</a></li>
+							<li ng-show="global.currentUser"><a ng-class="{'active': isActive(6)}" href="#/pedidos"><i class="fa fa-usd"></i>Pedidos</a></li>
 							<li ng-show="global.currentUser"><a ng-class="{'active': isActive(2)}" href="#/clientes"><i class="fa fa-asterisk"></i>Clientes</a></li>
 							<li ng-show="global.currentUser"><a ng-class="{'active': isActive(4)}" href="#/meus-dados"><i class="fa fa-user"></i>Meus dados</a></li>
 							<li ng-show="global.currentUser"><a href="#/logout"><i class="glyphicon glyphicon-log-out"></i>Logout</a></li>

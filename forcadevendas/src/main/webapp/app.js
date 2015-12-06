@@ -3,7 +3,8 @@
 		app : angular.module('forcaDeVendas', [ 'ngRoute', 'ngCookies',
 				'ngResource', 'forcaDeVendas.clientes', 'forcaDeVendas.login',
 				'forcaDeVendas.Home', 'forcaDeVendas.catalogo',
-				'forcaDeVendas.meusDados', 'forcaDeVendas.produto', 'forcaDeVendas.carrinho' ])
+				'forcaDeVendas.meusDados', 'forcaDeVendas.produto', 'forcaDeVendas.carrinho',
+				'forcaDeVendas.pedidos' ])
 	};
 
 	ForcaDeVendas.app.config([ '$routeProvider', function($routeProvider) {
@@ -64,6 +65,13 @@
 			controller : 'ProdutoController',
 			data : {
 				headerPage : 3
+			}
+		})
+		.when('/pedidos', {
+			templateUrl: 'pedidos/pedidos.html',
+			controller: 'PedidosController',
+			data: {
+				headerPage: 6
 			}
 		})
 		.otherwise({
