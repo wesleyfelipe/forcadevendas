@@ -74,6 +74,13 @@
 				headerPage: 6
 			}
 		})
+		.when('/novo-pedido', {
+			templateUrl: 'pedidos/novo-pedido.html',
+			controller: 'NovoPedidoController',
+			data: {
+				headerPage: 6
+			}
+		})
 		.otherwise({
 			redirectTo : '/login'
 		});

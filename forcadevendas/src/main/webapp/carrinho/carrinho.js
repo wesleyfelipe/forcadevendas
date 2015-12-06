@@ -3,8 +3,9 @@
 
 	carrinhoModule.controller('CarrinhoController', [
 			'$scope',
+			'$window',
 			'CarrinhoService',
-			function($scope, CarrinhoService) {
+			function($scope, $window, CarrinhoService) {
 
 				$scope.itens;
 
@@ -64,6 +65,10 @@
 				$scope.limparCarrinho = function() {
 					CarrinhoService.clean();
 					load();
+				}
+				
+				$scope.criarPedido = function(){
+					$window.location.href = '#/novo-pedido';
 				}
 
 			} ]);
