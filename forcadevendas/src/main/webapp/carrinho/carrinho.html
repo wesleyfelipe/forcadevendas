@@ -15,10 +15,21 @@
 	<div ng-show='itens.length > 0'>
 		<div class="page-header">
 			<div class="row">
-				<h4 class="pull-right">Total Itens: {{calcularQtdeTotal()}}</h4>
+				<h4 class="pull-right">Total de Itens: {{calcularQtdeTotal()}}</h4>
 			</div>
 			<div class="row">
-				<h4 class="pull-right">Total Pedido: R$ {{calcularTotal()}}</h4>
+				<h4 class="pull-right">Total do Pedido: R$ {{calcularTotal()}}</h4>
+			</div>
+			<div class="row">
+				<button type="button" class="btn btn-fefault main-cart-btn pull-right"
+					ng-click="">
+					<i class="fa fa-check" /> </i> Realizar Pedido
+				</button>
+				<button type="button" class="btn btn-fefault main-cart-btn pull-right"
+					ng-click="limparCarrinho()">
+					<i class="fa fa-eraser" /> </i> Limpar Carrinho
+				</button>
+
 			</div>
 		</div>
 
@@ -47,7 +58,7 @@
 							item.quantidade)}}</h5>
 						<button type="button" class="btn btn-fefault remove-cart"
 							ng-click="removerItem(item)">
-							<i class="fa fa-trash-o" /> </i> Remover
+							<i class="fa fa-times" /> </i> Remover
 						</button>
 					</div>
 

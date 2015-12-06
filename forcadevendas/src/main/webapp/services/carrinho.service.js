@@ -44,6 +44,7 @@
         	
         	clean : function(){
         		$window.localStorage.removeItem(localStorage);
+        		itens = [];
         	}
         }
     }]);
