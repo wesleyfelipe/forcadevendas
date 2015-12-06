@@ -3,10 +3,8 @@
 
 	carrinhoModule.controller('CarrinhoController', [
 			'$scope',
-			'$location',
-			'$route',
 			'CarrinhoService',
-			function($scope, $location, $route, CarrinhoService) {
+			function($scope, CarrinhoService) {
 
 				$scope.itens;
 
@@ -60,14 +58,10 @@
 
 				$scope.removerItem = function(item) {
 					CarrinhoService.remove(item);
-					if ($scope.itens.length == 0) {
-						$route.current = '#/catalogo';
-					} else {
-						load();
-					}
+					load();
 				}
-				
-				$scope.limparCarrinho = function(){
+
+				$scope.limparCarrinho = function() {
 					CarrinhoService.clean();
 					load();
 				}
