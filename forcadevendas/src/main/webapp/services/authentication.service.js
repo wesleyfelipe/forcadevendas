@@ -1,8 +1,8 @@
 (function(angular) {
     var app = angular.module('forcaDeVendas');
 
-    app.factory('AuthenticationService', ['$http', '$cookieStore', '$rootScope',
-        function($http, $cookieStore, $rootScope) {
+    app.factory('AuthenticationService', ['$http', '$cookieStore', '$rootScope', 'CarrinhoService',
+        function($http, $cookieStore, $rootScope, CarrinhoService) {
             var clearCredentials = function clearCredentials() {
                     $rootScope.global = {};
                     $cookieStore.remove('global');
@@ -27,6 +27,7 @@
 
                 logout: function(callback) {
                     clearCredentials();
+                    CarrinhoService.clean();
                     callback();
                 },
 

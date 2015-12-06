@@ -5,10 +5,13 @@
         var itens = [];
         var localStorage = 'carrinho';
         return {
+        	
             list: function() {
             	itens = JSON.parse($window.localStorage[localStorage] || '[]');
                 return itens;
             },
+            
+            
         	add : function(item){
         		var existingItemIndex = -1;
         		itens.some(function(it, index){
@@ -28,13 +31,19 @@
         		$window.localStorage[localStorage] = JSON.stringify(itens);
         		itens = JSON.parse($window.localStorage[localStorage] || '[]');
         	},
+        	
+        	
         	remove : function(item){
         		var index = itens.indexOf(item);
         		if (index > -1) {
         		    itens.splice(index, 1);
+        		    $window.localStorage[localStorage] = JSON.stringify(itens);
+            		itens = JSON.parse($window.localStorage[localStorage] || '[]');
         		}
-        		$window.localStorage[localStorage] = JSON.stringify(itens);
-        		itens = JSON.parse($window.localStorage[localStorage] || '[]');
+        	},
+        	
+        	clean : function(){
+        		$window.localStorage.removeItem(localStorage);
         	}
         }
     }]);
