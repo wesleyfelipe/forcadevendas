@@ -2485,3 +2485,7 @@ h2.title {
 	margin-bottom: 20px;
 	margin-left: 15px;
 }
+
+.no-margin{
+	margin: 0px !important;
+}

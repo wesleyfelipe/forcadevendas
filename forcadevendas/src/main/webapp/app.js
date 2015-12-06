@@ -26,7 +26,7 @@
 			data : {
 				headerPage : 2
 			}
-		}).when('/cadastroClientes', {
+		}).when('/cadastro-cliente', {
 			templateUrl : 'clientes/cadastroClientes.html',
 			controller : 'CadastroController'
 		}).when('/catalogo', {
