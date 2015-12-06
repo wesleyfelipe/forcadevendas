@@ -28,7 +28,10 @@
 			}
 		}).when('/cadastro-cliente', {
 			templateUrl : 'clientes/cadastroClientes.html',
-			controller : 'CadastroController'
+			controller : 'CadastroController',
+			data : {
+				headerPage : 2
+			}
 		}).when('/catalogo', {
 			templateUrl : 'catalogo/catalogo.html',
 			controller : 'CatalogoController',
@@ -47,7 +50,7 @@
 			data : {
 				headerPage : 5
 			}
-		}).when('/produtos/:idProduto', {
+		}).when('/produto/:idProduto', {
 			templateUrl : function(param) {
 				if (!param) {
 					return 'home/home.html';

@@ -1,6 +1,5 @@
 package com.pqt.forcadevendas.entity.to;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -17,7 +16,7 @@ public class PedidoDTO {
 	private String nomeRepresentante;
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy HH:mm")
 	private Date dataCriacao;
-	private BigDecimal totalPedido;
+	private double totalPedido;
 	private EnderecoDTO enderecoEntrega;
 	private List<ItemPedidoDTO> itensPedido = new ArrayList<ItemPedidoDTO>();
 	
@@ -25,7 +24,7 @@ public class PedidoDTO {
 	}
 	
 	public PedidoDTO(Integer id, String nomeCliente, String nomeRepresentante, Date dataCriacao,
-			BigDecimal totalPedido, Integer idCliente, EnderecoDTO enderecoEntrega) {
+			double totalPedido, Integer idCliente, EnderecoDTO enderecoEntrega) {
 		super();
 		this.id = id;
 		this.nomeCliente = nomeCliente;
@@ -68,11 +67,11 @@ public class PedidoDTO {
 		this.dataCriacao = dataCriacao;
 	}
 	
-	public BigDecimal getTotalPedido() {
+	public double getTotalPedido() {
 		return totalPedido;
 	}
 	
-	public void setTotalPedido(BigDecimal totalPedido) {
+	public void setTotalPedido(double totalPedido) {
 		this.totalPedido = totalPedido;
 	}
 	

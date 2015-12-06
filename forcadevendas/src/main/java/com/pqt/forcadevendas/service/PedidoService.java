@@ -40,7 +40,7 @@ public class PedidoService implements IPedidoService {
 
 	@Autowired
 	private IProdutoDAO produtoDao;
-	
+
 	@Autowired
 	private IEnderecoEntregaDAO enderecoEntregaDao;
 
@@ -83,10 +83,10 @@ public class PedidoService implements IPedidoService {
 		return buildPedidoDtoFromPedido(pedido);
 	}
 
-	private BigDecimal getTotalPedido(Pedido pedido) {
-		BigDecimal total = new BigDecimal(0);
+	private double getTotalPedido(Pedido pedido) {
+		double total = 0;
 		for (ItemPedido item : pedido.getItemPedidos()) {
-			total = total.add(item.getProduto().getPrecoValido());
+			total += item.getProduto().getPrecoPromocao().doubleValue() * item.getQuantidade().doubleValue();
 		}
 		return total;
 	}
@@ -110,8 +110,8 @@ public class PedidoService implements IPedidoService {
 
 		return dto;
 	}
-	
-	private EnderecoDTO buildEnderecoDTOFromEnderecoEntrega(EnderecoEntrega endereco){
+
+	private EnderecoDTO buildEnderecoDTOFromEnderecoEntrega(EnderecoEntrega endereco) {
 		EnderecoDTO dto = new EnderecoDTO();
 		dto.setCep(endereco.getEndereco().getCep());
 		dto.setCidade(endereco.getEndereco().getCidade().getNome());
@@ -131,25 +131,26 @@ public class PedidoService implements IPedidoService {
 		pedido.setCliente(findClienteForPedido(dto.getIdCliente()));
 		pedido.setEnderecoEntrega(findEnderecoForPedido(dto.getEnderecoEntrega().getId()));
 
-		if(dto.getItensPedido().isEmpty()){
+		if (dto.getItensPedido().isEmpty()) {
 			throw new ValidationException("É necessário incluir ao menos um item para realizar um pedido.");
 		}
-		
+
 		pedido.getItemPedidos().clear();
 		for (ItemPedidoDTO itemDto : dto.getItensPedido()) {
-			ItemPedido itemPedido = new ItemPedido(findProdutoForPedido(itemDto.getIdProduto()), itemDto.getQuantidade(),
-					itemDto.getTamanho());
+			ItemPedido itemPedido = new ItemPedido(findProdutoForPedido(itemDto.getIdProduto()),
+					itemDto.getQuantidade(), itemDto.getTamanho());
 			validateItemPedido(itemPedido);
 			pedido.addItemPedido(itemPedido);
 		}
 
 		return pedido;
 	}
-	
-	private void validateItemPedido(ItemPedido itemPedido){
-		if(itemPedido.getQuantidade() == null)
-			throw new ValidationException("É necessário informar a quantidade de todos os itens para realizar um pedido.");
-		if(itemPedido.getTamanho() == null)
+
+	private void validateItemPedido(ItemPedido itemPedido) {
+		if (itemPedido.getQuantidade() == null)
+			throw new ValidationException(
+					"É necessário informar a quantidade de todos os itens para realizar um pedido.");
+		if (itemPedido.getTamanho() == null)
 			throw new ValidationException("É necessário informar o tamanho de todos os itens para realizar um pedido.");
 	}
 
@@ -165,7 +166,7 @@ public class PedidoService implements IPedidoService {
 		}
 		throw new UnrecoverableKeyException("Cliente não informado. Não foi possível criar pedido.");
 	}
-	
+
 	private EnderecoEntrega findEnderecoForPedido(Integer idEndereco) throws Exception {
 		if (idEndereco != null) {
 			EnderecoEntrega enderecoEntrega = enderecoEntregaDao.getEnderecoEntrega(idEndereco);

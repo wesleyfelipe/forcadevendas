@@ -1,6 +1,5 @@
 package com.pqt.forcadevendas.entity.to;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -12,10 +11,10 @@ public class PedidoDadosBasicosDTO {
 	private String nomeRepresentante;
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy HH:mm")
 	private Date dataCriacao;
-	private BigDecimal totalPedido;
+	private double totalPedido;
 
 	public PedidoDadosBasicosDTO(Integer id, String nomeCliente, String nomeRepresentante, Date dataCriacao,
-			BigDecimal totalPedido) {
+			double totalPedido) {
 		super();
 		this.id = id;
 		this.nomeCliente = nomeCliente;
@@ -56,11 +55,11 @@ public class PedidoDadosBasicosDTO {
 		this.dataCriacao = dataCriacao;
 	}
 
-	public BigDecimal getTotalPedido() {
+	public double getTotalPedido() {
 		return totalPedido;
 	}
 
-	public void setTotalPedido(BigDecimal totalPedido) {
+	public void setTotalPedido(double totalPedido) {
 		this.totalPedido = totalPedido;
 	}
 
