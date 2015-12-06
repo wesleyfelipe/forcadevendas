@@ -14,6 +14,7 @@
 				$scope.totalItensPedido;
 				$scope.precoTotalPedido;
 				$scope.clientePedido;
+				$scope.clienteSelecionado;
 
 				var init = function() {
 					$http.get('/rest/recursos/representante/meus-dados')
@@ -33,6 +34,10 @@
 					}, function(response) {
 						$scope.clientePedido = angular.fromJson(response);
 					});
+				}
+				
+				$scope.realizarPedido = function(){
+					console.log("teste");
 				}
 				
 			} ]);
