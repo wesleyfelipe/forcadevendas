@@ -3,11 +3,6 @@
 		<h2>Novo Pedido</h2>
 	</div>
 
-	<div ng-show="ui.sucesso" class="alert alert-success">
-		<span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
-		Pedido cadastrado com sucesso
-	</div>
-
 	<form id="novo-pedido-form" method="post">
 
 		<div class="page-header">
@@ -43,32 +38,34 @@
 			<h4>Dados do Cliente</h4>
 		</div>
 		<div class="row">
-			<div class="form-group col-md-12">
-				<label for="endereco">Buscar Cliente</label> <input name="endereco"
-					id="endereco" type="text" class="form-control" required="required"
-					ng-model="cliente.endereco">
+			<div class="form-group col-md-6">
+				<label for="busca-cliente">Buscar Cliente</label>
+				<select ng-options="(cliente.nome) for cliente in listaClientes" ng-change="findCliente(clientePedido.id)"
+					ng-model="clientePedido" id="busca-cliente" name="busca-cliente"
+					class="form-control" required>
+				</select>
 			</div>
 		</div>
 		<div class="row">
 			<div class="form-group col-md-6">
 				<label for="nome-cliente">Nome:</label> <input name="nome-cliente"
 					id="nome-cliente" type="text" class="form-control"
-					disabled="disabled" ng-model="cliente.numero">
+					disabled="disabled" ng-model="clientePedido.nome">
 			</div>
 			<div class="form-group col-md-6">
 				<label for="cnpj-cliente">CNPJ:</label> <input name="cnpj-cliente"
 					id="cnpj-cliente" type="text" class="form-control"
-					disabled="disabled" ng-model="cliente.numero">
+					disabled="disabled" ng-model="clientePedido.cnpj">
 			</div>
 			<div class="form-group col-md-6">
 				<label for="telefone-cliente">Telefone:</label> <input
 					name="telefone-cliente" id="telefone-cliente" type="text"
-					class="form-control" disabled="disabled" ng-model="cliente.numero">
+					class="form-control" disabled="disabled" ng-model="clientePedido.fone">
 			</div>
 			<div class="form-group col-md-6">
 				<label for="email-cliente">E-mail:</label> <input
 					name="email-cliente" id="email-cliente" type="text"
-					class="form-control" disabled="disabled" ng-model="cliente.numero">
+					class="form-control" disabled="disabled" ng-model="clientePedido.email">
 			</div>
 		</div>
 		<div class="page-header">
@@ -90,15 +87,13 @@
 			<div class="form-group col-md-4">
 				<label for="data-pedido">Data de Emissão:</label> <input
 					name="data-pedido" id="data-pedido" type="date"
-					class="form-control" disabled="disabled"
-					ng-model="dataPedido">
+					class="form-control" disabled="disabled" ng-model="dataPedido">
 			</div>
 		</div>
 
 		<div class="form-group">
 			<div class="pull-right">
-				<button type="submit" class="btn main-btn">Realizar
-					Pedido</button>
+				<button type="submit" class="btn main-btn">Realizar Pedido</button>
 				<a class="btn secundary-btn" href="#/carrinho">Cancelar</a>
 			</div>
 		</div>

@@ -3,8 +3,8 @@
 		app : angular.module('forcaDeVendas', [ 'ngRoute', 'ngCookies',
 				'ngResource', 'forcaDeVendas.clientes', 'forcaDeVendas.login',
 				'forcaDeVendas.Home', 'forcaDeVendas.catalogo',
-				'forcaDeVendas.meusDados', 'forcaDeVendas.produto', 'forcaDeVendas.carrinho',
-				'forcaDeVendas.pedidos' ])
+				'forcaDeVendas.meusDados', 'forcaDeVendas.produto',
+				'forcaDeVendas.carrinho', 'forcaDeVendas.pedidos' ])
 	};
 
 	ForcaDeVendas.app.config([ '$routeProvider', function($routeProvider) {
@@ -14,48 +14,40 @@
 			data : {
 				headerPage : 1
 			}
-		})
-		.when('/login', {
+		}).when('/login', {
 			templateUrl : 'login/login.html',
 			controller : 'LoginController'
-		})
-		.when('/logout', {
+		}).when('/logout', {
 			template : ' ',
 			controller : 'LogoutController'
-		})
-		.when('/clientes', {
+		}).when('/clientes', {
 			templateUrl : 'clientes/clientes.html',
 			controller : 'ClientesController',
 			data : {
 				headerPage : 2
 			}
-		})
-		.when('/cadastroClientes', {
+		}).when('/cadastroClientes', {
 			templateUrl : 'clientes/cadastroClientes.html',
 			controller : 'CadastroController'
-		})
-		.when('/catalogo', {
+		}).when('/catalogo', {
 			templateUrl : 'catalogo/catalogo.html',
 			controller : 'CatalogoController',
 			data : {
 				headerPage : 3
 			}
-		})
-		.when('/meus-dados', {
+		}).when('/meus-dados', {
 			templateUrl : 'meus-Dados/meus-dados.html',
 			controller : 'MeusDadosController',
 			data : {
 				headerPage : 4
 			}
-		})
-		.when('/carrinho', {
+		}).when('/carrinho', {
 			templateUrl : 'carrinho/carrinho.html',
 			controller : 'CarrinhoController',
 			data : {
 				headerPage : 5
 			}
-		})
-		.when('/produto/:idProduto', {
+		}).when('/produto/:idProduto', {
 			templateUrl : function(param) {
 				if (!param) {
 					return 'home/home.html';
@@ -66,22 +58,19 @@
 			data : {
 				headerPage : 3
 			}
-		})
-		.when('/pedidos', {
-			templateUrl: 'pedidos/pedidos.html',
-			controller: 'PedidosController',
-			data: {
-				headerPage: 6
+		}).when('/pedidos', {
+			templateUrl : 'pedidos/pedidos.html',
+			controller : 'PedidosController',
+			data : {
+				headerPage : 6
 			}
-		})
-		.when('/novo-pedido', {
-			templateUrl: 'pedidos/novo-pedido.html',
-			controller: 'NovoPedidoController',
-			data: {
-				headerPage: 6
+		}).when('/novo-pedido', {
+			templateUrl : 'pedidos/novo-pedido.html',
+			controller : 'NovoPedidoController',
+			data : {
+				headerPage : 6
 			}
-		})
-		.otherwise({
+		}).otherwise({
 			redirectTo : '/login'
 		});
 	} ]);

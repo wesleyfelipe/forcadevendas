@@ -6,11 +6,14 @@
 			'$http',
 			'PedidoService',
 			'CarrinhoService',
-			function($scope, $http, PedidoService, CarrinhoService) {
+			'ClienteService',
+			function($scope, $http, PedidoService, CarrinhoService, ClienteService) {
 
 				$scope.representante;
+				$scope.listaClientes;
 				$scope.totalItensPedido;
 				$scope.precoTotalPedido;
+				$scope.clientePedido;
 
 				var init = function() {
 					$http.get('/rest/recursos/representante/meus-dados')
@@ -20,8 +23,17 @@
 					$scope.totalItensPedido = CarrinhoService.totalItens();
 					$scope.precoTotalPedido = "R$ " + CarrinhoService.precoTotal();
 					$scope.dataPedido = new Date();
+					$scope.listaClientes = ClienteService.query();
 				}
 				init();
+				
+				$scope.findCliente = function(idCliente){
+					ClienteService.get({
+						id : idCliente
+					}, function(response) {
+						$scope.clientePedido = angular.fromJson(response);
+					});
+				}
 				
 			} ]);
 })(angular);

@@ -3,6 +3,6 @@
 
     app.factory('ClienteService', ['$resource',
         function($resource) {
-            return $resource('/rest/recursos/cliente');
+            return $resource('/rest/recursos/cliente/:id');
         }]);
 })(angular);
