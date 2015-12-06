@@ -54,7 +54,7 @@
 							<h5>Preço promocional: R$ {{item.precoPromocional}}</h5>
 						</div>
 						<div class="col-sm-3">
-							<label>Quantidade:</label> <input type="text"
+							<label>Quantidade:</label> <input type="text" ng-change="gravarCarrinho()"
 								ng-model="item.quantidade" ng-required="true"
 								onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
 							<h5>Subtotal: R$ {{calcularSubtotal(item.precoPromocional,

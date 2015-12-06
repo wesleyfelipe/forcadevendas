@@ -11,6 +11,10 @@
                 return itens;
             },
             
+            save: function(carrinho){
+            	$window.localStorage[localStorage] = JSON.stringify(carrinho);
+        		itens = JSON.parse($window.localStorage[localStorage] || '[]');
+            },
             
         	add : function(item){
         		var existingItemIndex = -1;

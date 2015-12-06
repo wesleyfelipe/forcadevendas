@@ -56,6 +56,11 @@
 
 					return total;
 				}
+				
+				$scope.gravarCarrinho = function(){
+					CarrinhoService.save($scope.itens);
+					load();
+				}
 
 				$scope.removerItem = function(item) {
 					CarrinhoService.remove(item);
