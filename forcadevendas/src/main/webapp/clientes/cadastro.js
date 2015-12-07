@@ -36,7 +36,6 @@ clientesModule.controller('CadastroController', ['$http','$scope','$location','G
 				fone: $scope.cliente.telefone,
 				enderecoComercial: {
 					logradouro: $scope.cliente.endereco,
-					numero: $scope.cliente.numero,
 					cep: $scope.cliente.cep,
 					cidade: $scope.cliente.cidade.nome,
 					estado: $scope.cliente.estado.nome,
