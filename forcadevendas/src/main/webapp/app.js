@@ -73,6 +73,9 @@
 			data : {
 				headerPage : 6
 			}
+		}).when('/cliente/:id', {
+			templateUrl : 'clientes/editarClientes.html',
+			controller : 'EditarClienteController'
 		}).when('/pedido/:idPedido', {
 			templateUrl : 'pedidos/view-pedido.html',
 			controller : 'PedidoViewController',

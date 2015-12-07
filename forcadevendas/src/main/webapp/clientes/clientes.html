@@ -42,7 +42,7 @@
     </div>
     
     <div class="list-group">
-        <a href="#" class="list-group-item" ng-repeat="cliente in clientes | filter: search | filterByStatus: statusFilter">
+        <a ng-href="#/cliente/{{cliente.id}}" class="list-group-item" ng-repeat="cliente in clientes | filter: search | filterByStatus: statusFilter">
             <h4 class="list-item-heading">
                 {{cliente.id}} - {{cliente.nome}}
                 <span>
