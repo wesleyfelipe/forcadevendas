@@ -38,7 +38,7 @@ public class AppConfig {
     private Environment env;
      
     @Bean
-    public DataSource dataSource() throws SQLException, URISyntaxException {
+    public BasicDataSource dataSource() throws SQLException, URISyntaxException {
     	//TODO: colocar isso em variavel de ambiente (Ajustar)
     	URI dbUri = new URI(System.getenv("DATABASE_URL"));
 
@@ -49,7 +49,7 @@ public class AppConfig {
     	
     	BasicDataSource dataSource = new BasicDataSource();
          
-        dataSource.setDriverClassName(env.getRequiredProperty(PROPERTY_NAME_DATABASE_DRIVER));
+//        dataSource.setDriverClassName(env.getRequiredProperty(PROPERTY_NAME_DATABASE_DRIVER));
         dataSource.setUrl(dbUrl);
         dataSource.setUsername(username);
         dataSource.setPassword(password);
