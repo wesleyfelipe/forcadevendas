@@ -42,6 +42,7 @@ public class AppConfig {
      
     @Bean
     public DataSource dataSource() throws SQLException, URISyntaxException {
+    	//TODO: colocar isso em variavel de ambiente
     	URI dbUri = new URI("postgres://jttcjjnheujhqd:xBhbp1P0zm5R2BvQOvlkjsRljp@ec2-107-22-175-206.compute-1.amazonaws.com:5432/deo0fu1hf69j5f");
 
         String username = dbUri.getUserInfo().split(":")[0];
