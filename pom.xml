@@ -16,6 +16,7 @@
 		<postgres.version>9.4-1201-jdbc41</postgres.version>
 		<servletapi.version>3.1.0</servletapi.version>
 		<javax-ws.version>2.0.1</javax-ws.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<dependencies>
 		<!-- Spring -->
