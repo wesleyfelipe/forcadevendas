@@ -13,6 +13,10 @@
 						id : $route.current.params.idPedido
 					}, function(response) {
 						$scope.pedido = angular.fromJson(response);
+						$scope.pedido.quantidade = response.itensPedido.reduce(function(sum, item) {
+							return sum + item.quantidade;
+						}, 0);
+
 						loadCliente(response);
 					});
 				};
