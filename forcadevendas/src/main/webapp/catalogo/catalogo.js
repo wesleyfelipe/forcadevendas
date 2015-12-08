@@ -88,8 +88,7 @@
 								$scope.pageSize = 9;
 
 								$scope.numberOfPages = function(produtos) {
-									return Math.ceil(produtos.length
-											/ $scope.pageSize);
+									return Math.ceil(produtos.length / $scope.pageSize);
 								}
 
 								$scope.getNumber = function(num) {
@@ -99,7 +98,6 @@
 								$scope.changePage = function(pageNum) {
 									$scope.currentPage = pageNum;
 								};
-
 							} ]);
 
 })(angular);

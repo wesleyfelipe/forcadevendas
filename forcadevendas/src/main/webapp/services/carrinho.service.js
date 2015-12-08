@@ -67,7 +67,7 @@
 					var subtotal = (item.precoPromocional * item.quantidade).toFixed(2);
 					total += parseFloat(subtotal);
 				});
-				return total.toFixed(2);
+				return total;
         	}
         }
     }]);

@@ -74,13 +74,13 @@
 									<div class="single-products">
 										<div class="productinfo text-center">
 											<img ng-src="{{produto.imagem}}" alt="" />
-											<h2>R$ {{produto.precoPromocional}}</h2>
+											<h2 ng-bind="formatPrice(produto.precoPromocional)"></h2>
 											<p>{{produto.nomeModelo}}</p>
 										</div>
 										<div class="product-overlay">
 											<div class="overlay-content">
-												<p>De: R$ {{produto.preco}}</p>
-												<h2>Por: R$ {{produto.precoPromocional}}</h2>
+												<p>De: <span ng-bind="formatPrice(produto.preco)"></span></p>
+												<h2>Por: <span ng-bind="formatPrice(produto.precoPromocional)"></span></h2>
 												<p>{{produto.nomeModelo}}</p>
 											</div>
 										</div>

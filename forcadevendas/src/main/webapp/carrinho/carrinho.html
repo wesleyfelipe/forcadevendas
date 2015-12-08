@@ -19,7 +19,7 @@
 					<h4 class="pull-right">Total de Itens: {{calcularQtdeTotal()}}</h4>
 				</div>
 				<div class="row">
-					<h4 class="pull-right">Total do Pedido: R$ {{calcularTotal()}}</h4>
+					<h4 class="pull-right">Total do Pedido: <span ng-bind="formatPrice(calcularTotal())"></span></h4>
 				</div>
 				<div class="row">
 					<button type="submit"
@@ -49,16 +49,15 @@
 							<h3>{{item.nomeModelo}}</h3>
 							<h5>Tamanho: {{item.tamanho}} / Cor: {{item.cor}}</h5>
 							<h5>
-								<s>Preço: R$ {{item.preco}}</s>
+								<s>Preço: <span ng-bind="formatPrice(item.preco)"></span></s>
 							</h5>
-							<h5>Preço promocional: R$ {{item.precoPromocional}}</h5>
+							<h5>Preço promocional: <span ng-bind="formatPrice(item.precoPromocional)"></span></h5>
 						</div>
 						<div class="col-sm-3">
 							<label>Quantidade:</label> <input type="text" ng-change="gravarCarrinho()"
 								ng-model="item.quantidade" ng-required="true"
 								onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
-							<h5>Subtotal: R$ {{calcularSubtotal(item.precoPromocional,
-								item.quantidade)}}</h5>
+							<h5>Subtotal: <span ng-bind="formatPrice(calcularSubtotal(item.precoPromocional,item.quantidade))"></span></h5>
 							<button type="button" class="btn btn-fefault remove-cart"
 								ng-click="removerItem(item)">
 								<i class="fa fa-times" /> </i> Remover

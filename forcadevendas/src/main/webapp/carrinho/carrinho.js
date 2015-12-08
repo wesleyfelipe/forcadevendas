@@ -18,7 +18,7 @@
 					if (preco == null || qtde == null) {
 						return '-';
 					}
-					return (preco * qtde).toFixed(2);
+					return (preco * qtde);
 				}
 
 				$scope.calcularTotal = function() {
@@ -37,7 +37,7 @@
 						return '-';
 					}
 
-					return total.toFixed(2);
+					return total;
 				}
 
 				$scope.calcularQtdeTotal = function() {

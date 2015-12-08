@@ -107,6 +107,18 @@
 							$http.defaults.headers.common['X-Auth-Token'] = $rootScope.global.currentUser.token;
 						}
 
+						$rootScope.formatPrice = function(price) {
+			                var formattedPrice;
+
+			                if (price && price.toLocaleString) {
+			                    formattedPrice = price.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
+			                } else {
+			                    formattedPrice = 'R$' + price;
+			                }
+
+			                return formattedPrice;
+			            };
+
 						$rootScope
 								.$on(
 										'$locationChangeStart',
