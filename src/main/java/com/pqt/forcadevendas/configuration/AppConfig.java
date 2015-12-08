@@ -40,11 +40,15 @@ public class AppConfig {
     @Bean
     public BasicDataSource dataSource() throws SQLException, URISyntaxException {
     	//TODO: colocar isso em variavel de ambiente (Ajustar)
-    	URI dbUri = new URI(System.getenv("DATABASE_URL"));
+    	//URI dbUri = new URI(System.getenv("DATABASE_URL"));
 
-        String username = dbUri.getUserInfo().split(":")[0];
-        String password = dbUri.getUserInfo().split(":")[1];
-        String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
+        //String username = dbUri.getUserInfo().split(":")[0];
+        //String password = dbUri.getUserInfo().split(":")[1];
+        //String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
+        
+        String username = "jttcjjnheujhqd";
+        String password = "xBhbp1P0zm5R2BvQOvlkjsRljp";
+        String dbUrl = "jdbc:postgresql://ec2-107-22-175-206.compute-1.amazonaws.com:5432/deo0fu1hf69j5f";
     	
     	
     	BasicDataSource dataSource = new BasicDataSource();
