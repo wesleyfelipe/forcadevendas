@@ -1,1 +1,1 @@
-web: java -Dfile.encoding=UTF-8 -jar target/dependency/jetty-runner.jar --port target/*.war
+web: java -Dfile.encoding=cp1252 -jar target/dependency/jetty-runner.jar --port target/*.war
