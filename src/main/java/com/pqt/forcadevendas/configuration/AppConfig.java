@@ -29,9 +29,6 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 public class AppConfig {
      
     private static final String PROPERTY_NAME_DATABASE_DRIVER = "db.driver";
-    private static final String PROPERTY_NAME_DATABASE_PASSWORD = "db.password";
-    private static final String PROPERTY_NAME_DATABASE_URL = "db.url";
-    private static final String PROPERTY_NAME_DATABASE_USERNAME = "db.username";
      
     private static final String PROPERTY_NAME_HIBERNATE_DIALECT = "hibernate.dialect";
     private static final String PROPERTY_NAME_HIBERNATE_SHOW_SQL = "hibernate.show_sql";
@@ -43,7 +40,7 @@ public class AppConfig {
     @Bean
     public DataSource dataSource() throws SQLException, URISyntaxException {
     	//TODO: colocar isso em variavel de ambiente (Ajustar)
-    	URI dbUri = new URI("postgres://jttcjjnheujhqd:xBhbp1P0zm5R2BvQOvlkjsRljp@ec2-107-22-175-206.compute-1.amazonaws.com:5432/deo0fu1hf69j5f");
+    	URI dbUri = new URI(System.getenv("DATABASE_URL"));
 
         String username = dbUri.getUserInfo().split(":")[0];
         String password = dbUri.getUserInfo().split(":")[1];
