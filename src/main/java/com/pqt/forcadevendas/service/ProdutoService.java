@@ -37,7 +37,7 @@ public class ProdutoService implements IProdutoService {
 	public ProdutoDTO getProduto(Integer id) {
 		Produto produto = dao.getProduto(id);
 		if (produto == null)
-			throw new NotFoundException("Produto com identificador " + id + " n„o existe.");
+			throw new NotFoundException("Produto com identificador " + id + " n√£o existe.");
 		return buildProdutoDtoFromProduto(produto);
 	}
 

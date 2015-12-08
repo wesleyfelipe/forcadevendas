@@ -23,7 +23,7 @@ public class RepresentanteService implements IRepresentanteService{
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		Representante representante = dao.getRepresentante(username);
 		if(representante == null)
-			throw new UsernameNotFoundException("Usuário " + username + " não encontrado.");
+			throw new UsernameNotFoundException("Usuï¿½rio " + username + " nÃ£o encontrado.");
 		return representante;
 	}
 

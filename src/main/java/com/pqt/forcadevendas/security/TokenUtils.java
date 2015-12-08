@@ -57,12 +57,6 @@ public class TokenUtils {
 		String[] parts = authToken.split(":");
 		long expires = Long.parseLong(parts[1]);
 		String signature = parts[2];
-
-		//[Wesley] Removi verificação de token expirado
-		/*if (expires < System.currentTimeMillis()) {
-			return false;
-		}*/
-
 		return signature.equals(TokenUtils.computeSignature(userDetails, expires));
 	}
 }

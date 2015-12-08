@@ -42,7 +42,7 @@ public class ClienteService implements IClienteService {
 	public ClienteDTO getCliente(int id) {
 		Cliente cliente = dao.getCliente(id);
 		if (cliente == null)
-			throw new NotFoundException("Cliente com identificador " + id + " não existe.");
+			throw new NotFoundException("Cliente com identificador " + id + " nï¿½o existe.");
 		return buildClienteDtoFromCliente(cliente);
 	}
 
@@ -65,7 +65,7 @@ public class ClienteService implements IClienteService {
 	public ClienteDTO updateCliente(Integer idCliente, ClienteDTO clienteDto) {
 		Cliente cliente = dao.getCliente(idCliente);
 		if(cliente == null)
-			throw new NotFoundException("Cliente com identificador " + idCliente + " não existe.");
+			throw new NotFoundException("Cliente com identificador " + idCliente + " nÃ£o existe");
 		updateClienteFromClienteDto(cliente, clienteDto);
 		dao.updateCliente(cliente);
 		return buildClienteDtoFromCliente(cliente);

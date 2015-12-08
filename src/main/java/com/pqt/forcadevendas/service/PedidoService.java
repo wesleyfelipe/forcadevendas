@@ -1,6 +1,5 @@
 package com.pqt.forcadevendas.service;
 
-import java.math.BigDecimal;
 import java.security.AccessControlException;
 import java.security.UnrecoverableKeyException;
 import java.util.ArrayList;
@@ -63,14 +62,14 @@ public class PedidoService implements IPedidoService {
 		Pedido pedido = dao.getPedido(id);
 
 		if (pedido == null) {
-			throw new NotFoundException("Pedido com identificador " + id + " n„o existe.");
+			throw new NotFoundException("Pedido com identificador " + id + " n√£o existe.");
 		}
 
 		Representante representante = (Representante) SecurityContextHolder.getContext().getAuthentication()
 				.getPrincipal();
 
 		if (!pedido.getRepresentante().getId().equals(representante.getId())) {
-			throw new AccessControlException("Pedido com identificador " + id + " n„o pertence ao usuario logado.");
+			throw new AccessControlException("Pedido com identificador " + id + " n√£o pertence ao usuario logado.");
 		}
 
 		return buildPedidoDtoFromPedido(pedido);
@@ -132,7 +131,7 @@ public class PedidoService implements IPedidoService {
 		pedido.setEnderecoEntrega(findEnderecoForPedido(dto.getEnderecoEntrega().getId()));
 
 		if (dto.getItensPedido().isEmpty()) {
-			throw new ValidationException("… necess·rio incluir ao menos um item para realizar um pedido.");
+			throw new ValidationException("√â necess√°rio incluir ao menos um item para realizar um pedido.");
 		}
 
 		pedido.getItemPedidos().clear();
@@ -149,9 +148,9 @@ public class PedidoService implements IPedidoService {
 	private void validateItemPedido(ItemPedido itemPedido) {
 		if (itemPedido.getQuantidade() == null)
 			throw new ValidationException(
-					"… necess·rio informar a quantidade de todos os itens para realizar um pedido.");
+					"√â necess√°rio informar a quantidade de todos os itens para realizar um pedido.");
 		if (itemPedido.getTamanho() == null)
-			throw new ValidationException("… necess·rio informar o tamanho de todos os itens para realizar um pedido.");
+			throw new ValidationException("√â necess√°rio informar o tamanho de todos os itens para realizar um pedido.");
 	}
 
 	private Cliente findClienteForPedido(Integer idCliente) throws Exception {
@@ -161,10 +160,10 @@ public class PedidoService implements IPedidoService {
 				return cliente;
 			} else {
 				throw new UnrecoverableKeyException(
-						"Cliente com id " + idCliente + " n„o existe. N„o foi possÌvel criar pedido.");
+						"Cliente com id " + idCliente + " n√£o existe. N√£o foi poss√≠vel criar pedido.");
 			}
 		}
-		throw new UnrecoverableKeyException("Cliente n„o informado. N„o foi possÌvel criar pedido.");
+		throw new UnrecoverableKeyException("Cliente n√£o informado. N√£o foi poss√≠vel criar pedido.");
 	}
 
 	private EnderecoEntrega findEnderecoForPedido(Integer idEndereco) throws Exception {
@@ -174,10 +173,10 @@ public class PedidoService implements IPedidoService {
 				return enderecoEntrega;
 			} else {
 				throw new UnrecoverableKeyException(
-						"Endereco com id " + idEndereco + " n„o existe. N„o foi possÌvel criar pedido.");
+						"Endereco com id " + idEndereco + " n√£o existe. N√£o foi possÔøΩvel criar pedido.");
 			}
 		}
-		throw new UnrecoverableKeyException("Cliente n„o informado. N„o foi possÌvel criar pedido.");
+		throw new UnrecoverableKeyException("Cliente n√£o informado. N√£o foi poss√≠vel criar pedido.");
 	}
 
 	private Produto findProdutoForPedido(Integer idProduto) throws Exception {
@@ -187,10 +186,10 @@ public class PedidoService implements IPedidoService {
 				return produto;
 			} else {
 				throw new UnrecoverableKeyException(
-						"Produto com id " + idProduto + " n„o existe. N„o foi possÌvel criar pedido.");
+						"Produto com id " + idProduto + " n√£o existe. N√£o foi poss√≠vel criar pedido.");
 			}
 		}
-		throw new UnrecoverableKeyException("Produto n„o informado em item. N„o foi possÌvel criar pedido.");
+		throw new UnrecoverableKeyException("Produto n√£o informado em item. N√£o foi poss√≠vel criar pedido.");
 	}
 
 }

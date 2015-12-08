@@ -29,14 +29,14 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     @ResponseBody
     JsonApiError handleException(BadCredentialsException ex) {
-        return new JsonApiError("Credenciais informadas são inválidas.", ex.getMessage());
+        return new JsonApiError("Credenciais informadas sÃ£o invÃ¡lidas.", ex.getMessage());
     }
 	
 	@ExceptionHandler
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     @ResponseBody
     JsonApiError handleException(HttpMessageNotReadableException ex) {
-        return new JsonApiError("O conteúdo da requisição é inválido. Revise os dados fornecidos.", ex.getMessage());
+        return new JsonApiError("O conteÃºdo da requisiÃ§Ã£o Ã© invÃ¡lido. Revise os dados fornecidos.", ex.getMessage());
     }
 	
 	@ExceptionHandler
@@ -50,27 +50,27 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
     @ResponseBody
     JsonApiError handleException(ConstraintViolationException ex) {
-        return new JsonApiError("O conteúdo da requisição é inválido. Revise os dados fornecidos.", ex.getSQLException().getMessage());
+        return new JsonApiError("O conteï¿½do da requisiÃ§Ã£o Ã© invÃ¡lido. Revise os dados fornecidos.", ex.getSQLException().getMessage());
     }
 	
 	@ExceptionHandler
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
     @ResponseBody
 	JsonApiError handleException(UnrecoverableKeyException ex){
-		return new JsonApiError("O conteúdo da requisição é inválido. Revise os dados fornecidos.", ex.getMessage());
+		return new JsonApiError("O conteÃºdo da requisiÃ§Ã£o Ã© invÃ¡lido. Revise os dados fornecidos.", ex.getMessage());
 	}
 	
 	@ExceptionHandler
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
     @ResponseBody
 	JsonApiError handleException(ValidationException ex){
-		return new JsonApiError("O conteúdo da requisição é inválido. Revise os dados fornecidos.", ex.getMessage());
+		return new JsonApiError("O conteÃºdo da requisiÃ§Ã£o Ã© invÃ¡lido. Revise os dados fornecidos.", ex.getMessage());
 	}
 	
 	@ExceptionHandler
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ResponseBody
     JsonApiError handleException(NotFoundException ex) {
-        return new JsonApiError("Recurso não encontrado.", ex.getMessage());
+        return new JsonApiError("Recurso nÃ£o encontrado.", ex.getMessage());
     }
 }
