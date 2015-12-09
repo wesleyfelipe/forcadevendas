@@ -39,7 +39,7 @@
 				headerPage : 3
 			}
 		}).when('/meus-dados', {
-			templateUrl : 'meus-Dados/meus-dados.html',
+			templateUrl : 'meus-dados/meus-dados.html',
 			controller : 'MeusDadosController',
 			data : {
 				headerPage : 4

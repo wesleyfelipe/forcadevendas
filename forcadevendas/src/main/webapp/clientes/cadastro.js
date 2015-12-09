@@ -33,7 +33,7 @@ clientesModule.controller('CadastroController', ['$http','$scope','$location','G
 			var clientes = {
 				cnpj: $scope.cliente.cnpj,
 				email: $scope.cliente.email,
-				fone: $scope.cliente.telefone,
+				fone: $scope.cliente.fone,
 				enderecoComercial: {
 					logradouro: $scope.cliente.endereco,
 					cep: $scope.cliente.cep,
